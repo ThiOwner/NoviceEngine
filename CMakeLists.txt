@@ -15,18 +15,26 @@ set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(glfw)
 
-add_executable(NoviceEngine
-        includes/src/glad.c
-        includes/tiny_obj_loader.h
-        src/Mesh.hpp
-        src/Mesh.cpp
-        src/Window.hpp
-        src/Window.cpp
-        src/Shaders.hpp
-        src/Shaders.cpp
-        main.cpp
-        utils/OBJLoader.cpp
+FetchContent_Declare(
+        glm
+        GIT_REPOSITORY https://github.com/g-truc/glm.git
+        GIT_TAG 1.0.1
+)
+FetchContent_MakeAvailable(glm)
+
+file(GLOB_RECURSE SOURCES
+        "src/*.cpp"
+        "src/*.hpp"
+        "utils/*.cpp"
+        "utils/*.hpp"
+        "components/*.cpp"
+        "components/*.hpp"
+        "includes/src/*.c"
+        "includes/*.h"
+        "main.cpp"
 )
 
+add_executable(NoviceEngine ${SOURCES})
+
 target_include_directories(NoviceEngine PRIVATE includes)
-target_link_libraries(NoviceEngine PRIVATE glfw OpenGL::GL)
+target_link_libraries(NoviceEngine PRIVATE glfw glm::glm OpenGL::GL)
