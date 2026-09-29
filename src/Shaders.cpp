@@ -3,6 +3,7 @@
 Shaders::Shaders(const std::string &vertexPath, const std::string &fragmentPath) {
     vertexShaderSource = getFileData(vertexPath);
     fragmentShaderSource = getFileData(fragmentPath);
+    this->compileShaders();
 }
 
 Shaders::~Shaders(){glDeleteProgram(shaderProgram);}
@@ -10,6 +11,10 @@ Shaders::~Shaders(){glDeleteProgram(shaderProgram);}
 void Shaders::use() const {
     glUseProgram(shaderProgram);
     activeProgram = shaderProgram;
+}
+
+void Shaders::setMat4(const std::string &name, const glm::mat4 &mat) {
+    glUniformMatrix4fv(glGetUniformLocation(activeProgram, name.c_str()), 1, GL_FALSE, glm::value_ptr(mat));
 }
 
 void Shaders::compileShaders() {
@@ -56,14 +61,7 @@ void Shaders::compileShaders() {
         throw std::runtime_error("Failed to compile shader program :" + std::string(infoLog));
     }
 
-    // Enable depth calculations
-    glEnable(GL_DEPTH_TEST);
-
     // Clean up
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
-}
-
-void Shaders::setMat4(const std::string &name, const glm::mat4 &mat) {
-    glUniformMatrix4fv(glGetUniformLocation(activeProgram, name.c_str()), 1, GL_FALSE, glm::value_ptr(mat));
 }

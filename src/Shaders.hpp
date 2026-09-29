@@ -19,8 +19,6 @@ public:
     Shaders(const Shaders&) = delete;
     Shaders& operator=(const Shaders&) = delete;
 
-    void compileShaders();
-
     void use() const;
 
     static void setMat4(const std::string &name, const glm::mat4 &mat);
@@ -35,6 +33,8 @@ private:
     std::string fragmentShaderSource;
 
     unsigned int shaderProgram{0};
+
+    void compileShaders();
 
     static std::string getFileData(const std::string& filepath) {
         std::ifstream file(filepath);

@@ -21,12 +21,15 @@ int Window::init() {
         return -1;
     }
 
+    // Enable depth calculations
+    glEnable(GL_DEPTH_TEST);
+
     return 0;
 }
 
 void Window::clear() {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-    glClear(GL_COLOR_BUFFER_BIT);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void Window::swapBuffers() { glfwSwapBuffers(win); }
