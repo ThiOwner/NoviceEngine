@@ -7,7 +7,10 @@ Shaders::Shaders(const std::string &vertexPath, const std::string &fragmentPath)
 
 Shaders::~Shaders(){glDeleteProgram(shaderProgram);}
 
-void Shaders::use() const {glUseProgram(shaderProgram);}
+void Shaders::use() const {
+    glUseProgram(shaderProgram);
+    activeProgram = shaderProgram;
+}
 
 void Shaders::compileShaders() {
     int  success;
@@ -59,4 +62,8 @@ void Shaders::compileShaders() {
     // Clean up
     glDeleteShader(vertexShader);
     glDeleteShader(fragmentShader);
+}
+
+void Shaders::setMat4(const std::string &name, const glm::mat4 &mat) {
+    glUniformMatrix4fv(glGetUniformLocation(activeProgram, name.c_str()), 1, GL_FALSE, glm::value_ptr(mat));
 }

@@ -2,6 +2,7 @@
 #include "src/Window.hpp"
 #include "src/GameObject.hpp"
 #include "../components/MeshRenderer.hpp"
+#include "../components/Transform.hpp"
 
 int main() {
     Window engineWindow;
@@ -9,6 +10,8 @@ int main() {
 
     GameObject teapot;
     teapot.addComponent<MeshRenderer>("models/utah_teapot.obj");
+    teapot.addComponent<Transform>();
+    teapot.getComponent<Transform>()->setPosition(glm::vec3(0.0f, 0.0f, -2.0f));
 
     Shaders defaultShaders("shaders/default.vert", "shaders/default.frag");
 
@@ -16,6 +19,7 @@ int main() {
         engineWindow.clear();
 
         defaultShaders.use();
+        teapot.update(0.1f);
         teapot.render();
 
         engineWindow.swapBuffers();

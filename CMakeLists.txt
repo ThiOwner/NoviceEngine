@@ -23,12 +23,12 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(glm)
 
 file(GLOB_RECURSE SOURCES
-        "src/*.cpp"
-        "src/*.hpp"
-        "utils/*.cpp"
-        "utils/*.hpp"
-        "components/*.cpp"
-        "components/*.hpp"
+        "src/**.cpp"
+        "src/**.hpp"
+        "utils/**.cpp"
+        "utils/**.hpp"
+        "components/**.cpp"
+        "components/**.hpp"
         "includes/src/*.c"
         "includes/*.h"
         "main.cpp"

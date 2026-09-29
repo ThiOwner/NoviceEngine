@@ -6,8 +6,13 @@
 #include <sstream>
 #include <stdexcept>
 
+#include "glm/fwd.hpp"
+#include "glm/detail/type_mat4x4.hpp"
+#include "glm/gtc/type_ptr.hpp"
+
 class Shaders {
 public:
+
     Shaders(const std::string& vertexPath, const std::string& fragmentPath);
     ~Shaders();
 
@@ -17,7 +22,12 @@ public:
     void compileShaders();
 
     void use() const;
+
+    static void setMat4(const std::string &name, const glm::mat4 &mat);
+
 private:
+    static inline unsigned int activeProgram = 0;
+
     [[nodiscard]] const char* getVertexSource() const {return vertexShaderSource.c_str();}
     [[nodiscard]] const char* getFragmentSource() const {return fragmentShaderSource.c_str();}
 
