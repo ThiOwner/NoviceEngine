@@ -25,6 +25,7 @@ add_executable(NoviceEngine
         src/Shaders.hpp
         src/Shaders.cpp
         main.cpp
+        utils/OBJLoader.cpp
 )
 
 target_include_directories(NoviceEngine PRIVATE includes)

@@ -6,7 +6,7 @@ int Window::init() {
         return -1;
     }
 
-    win = glfwCreateWindow(800, 600, "NoviceEngine", NULL, NULL);
+    win = glfwCreateWindow(1600, 800, "NoviceEngine", NULL, NULL);
 
     if (!win) {
         std::cerr << "Failure during window creation" << std::endl;

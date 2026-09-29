@@ -1,6 +1,7 @@
 # Debug files
 .idea
 cmake-build-debug
+models
 
 # Prerequisites
 *.d
