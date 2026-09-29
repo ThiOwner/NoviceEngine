@@ -1,20 +1,20 @@
 #include "Shaders.hpp"
 
+#include "glad/glad.h"
+#include "glm/gtc/type_ptr.hpp"
+
 Shaders::Shaders(const std::string &vertexPath, const std::string &fragmentPath) {
     vertexShaderSource = getFileData(vertexPath);
     fragmentShaderSource = getFileData(fragmentPath);
     this->compileShaders();
 }
 
-Shaders::~Shaders(){glDeleteProgram(shaderProgram);}
+Shaders::~Shaders(){ glDeleteProgram(shaderProgram); }
 
-void Shaders::use() const {
-    glUseProgram(shaderProgram);
-    activeProgram = shaderProgram;
-}
+void Shaders::use() const { glUseProgram(shaderProgram); }
 
-void Shaders::setMat4(const std::string &name, const glm::mat4 &mat) {
-    glUniformMatrix4fv(glGetUniformLocation(activeProgram, name.c_str()), 1, GL_FALSE, glm::value_ptr(mat));
+void Shaders::setMat4 (const std::string &name, const glm::mat4 &mat) const {
+    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, name.c_str()), 1, GL_FALSE, glm::value_ptr(mat));
 }
 
 void Shaders::compileShaders() {

@@ -38,4 +38,4 @@ void Window::pollEvents() { glfwPollEvents(); }
 
 bool Window::shouldClose() { return glfwWindowShouldClose(win); }
 
-void Window::terminate() {glfwTerminate();}
+void Window::terminate() { glfwTerminate(); }

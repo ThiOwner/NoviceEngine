@@ -13,6 +13,7 @@ Mesh::Mesh(const std::vector<Vertex>& v, const std::vector<GLuint>& i) {
 Mesh::~Mesh() {
     glDeleteVertexArrays(1, &VAO);
     glDeleteBuffers(1, &VBO);
+    glDeleteBuffers(1, &EBO);
 }
 
 void Mesh::draw() {

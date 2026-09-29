@@ -5,7 +5,7 @@ class GameObject;
 class Component {
 public:
     GameObject* parent = nullptr;
-    bool isActive = false;
+    bool isActive = true;
 
     virtual ~Component() = default;
 

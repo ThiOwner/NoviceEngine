@@ -1,14 +1,11 @@
 #pragma once
 
-#include "glad/glad.h"
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
-
 #include "glm/fwd.hpp"
-#include "glm/detail/type_mat4x4.hpp"
-#include "glm/gtc/type_ptr.hpp"
+
 
 class Shaders {
 public:
@@ -21,10 +18,9 @@ public:
 
     void use() const;
 
-    static void setMat4(const std::string &name, const glm::mat4 &mat);
+    void setMat4 (const std::string &name, const glm::mat4 &mat) const;
 
 private:
-    static inline unsigned int activeProgram = 0;
 
     [[nodiscard]] const char* getVertexSource() const {return vertexShaderSource.c_str();}
     [[nodiscard]] const char* getFragmentSource() const {return fragmentShaderSource.c_str();}
@@ -32,7 +28,7 @@ private:
     std::string vertexShaderSource;
     std::string fragmentShaderSource;
 
-    unsigned int shaderProgram{0};
+    unsigned int shaderProgram = 0;
 
     void compileShaders();
 

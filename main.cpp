@@ -8,12 +8,12 @@ int main() {
     Window engineWindow;
     if (engineWindow.init() != 0) return -1;
 
+    Shaders defaultShaders("shaders/default.vert", "shaders/default.frag");
+
     GameObject teapot;
-    teapot.addComponent<MeshRenderer>("models/utah_teapot.obj");
+    teapot.addComponent<MeshRenderer>("models/utah_teapot.obj",&defaultShaders);
     teapot.addComponent<Transform>();
     teapot.getComponent<Transform>()->setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
-
-    Shaders defaultShaders("shaders/default.vert", "shaders/default.frag");
 
     while (!engineWindow.shouldClose()) {
         engineWindow.clear();
