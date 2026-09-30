@@ -4,9 +4,12 @@
 #include <memory>
 
 #include "../components/Component.hpp"
+#include "../components/Transform.hpp"
 
 class GameObject {
 public:
+    GameObject();
+
     template<typename T, typename... Args>
     T* addComponent(Args&&... args) {
         auto newComponent = std::make_unique<T>(std::forward<Args>(args)...);
@@ -26,19 +29,15 @@ public:
         return nullptr;
     }
 
-    void update(float deltaTime) {
-        for (auto& comp : components) {
-            comp->update(deltaTime);
-        }
-    }
 
-    void render() {
-        for (auto& comp : components) {
-            comp->render();
-        }
-    }
+    void update(float deltaTime);
+
+    void render();
+
+    Transform* getTransform();
 
 private:
+    Transform* transform = nullptr;
     std::vector<std::unique_ptr<Component>> components;
 };
 

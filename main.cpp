@@ -2,7 +2,6 @@
 #include "src/Window.hpp"
 #include "src/GameObject.hpp"
 #include "../components/MeshRenderer.hpp"
-#include "../components/Transform.hpp"
 
 int main() {
     try {

@@ -13,8 +13,7 @@ MeshRenderer::MeshRenderer(const std::string& path, Shader* shader) {
 
 void MeshRenderer::render() {
     if (!isActive) {return;}
-    Transform* transform = parent->getComponent<Transform>();
-    shader->setMat4("u_modelMatrix", transform->getModelMatrix());
     shader->use();
+    shader->setMat4("u_modelMatrix", parent->getTransform()->getModelMatrix());
     mesh->draw();
 }
