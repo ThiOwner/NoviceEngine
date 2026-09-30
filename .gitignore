@@ -35,3 +35,6 @@ models
 *.exe
 *.out
 *.app
+
+# Ignoring language in includes file
+includes linguist-vendored

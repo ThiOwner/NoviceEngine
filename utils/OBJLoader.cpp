@@ -11,9 +11,8 @@ MeshData loadOBJ(const std::string& path) {
 
     if (!reader.ParseFromFile(path, readerConfig)) {
         if (!reader.Error().empty()) {
-            std::cerr << "TinyOBJLoader error: " << reader.Error() << std::endl;
+            throw std::runtime_error("TinyOBJLoader error: " + reader.Error());
         }
-        return {};
     }
 
     auto& attrib = reader.GetAttrib();
