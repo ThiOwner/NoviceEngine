@@ -1,6 +1,7 @@
 #pragma once
+#include "glm/vec3.hpp"
 
 struct Vertex {
-    float position[3];
-    float normal[3];
+    glm::vec3 position;
+    glm::vec3 normal;
 };

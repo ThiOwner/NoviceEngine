@@ -1,30 +1,27 @@
-#include "src/Shaders.hpp"
+#include "src/Shader.hpp"
 #include "src/Window.hpp"
 #include "src/GameObject.hpp"
 #include "../components/MeshRenderer.hpp"
 #include "../components/Transform.hpp"
 
 int main() {
-    Window engineWindow;
-    if (engineWindow.init() != 0) return -1;
+    try {
+        Window engineWindow;
+        Shader defaultShaders("shaders/default.vert", "shaders/default.frag");
 
-    Shaders defaultShaders("shaders/default.vert", "shaders/default.frag");
+        GameObject teapot;
+        teapot.addComponent<MeshRenderer>("models/utah_teapot.obj",&defaultShaders);
 
-    GameObject teapot;
-    teapot.addComponent<MeshRenderer>("models/utah_teapot.obj",&defaultShaders);
-    teapot.addComponent<Transform>();
-    teapot.getComponent<Transform>()->setPosition(glm::vec3(0.0f, 0.0f, 0.0f));
+        while (!engineWindow.shouldClose()) {
+            engineWindow.clear();
+            teapot.render();
+            engineWindow.swapBuffers();
+            engineWindow.pollEvents();
+        }
+        return 0;
 
-    while (!engineWindow.shouldClose()) {
-        engineWindow.clear();
-
-        defaultShaders.use();
-        teapot.render();
-
-        engineWindow.swapBuffers();
-        engineWindow.pollEvents();
+    } catch (std::exception& e) {
+        std::cerr << e.what() << std::endl;
+        return 1;
     }
-
-    engineWindow.terminate();
-    return 0;
 }

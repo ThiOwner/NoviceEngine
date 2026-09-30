@@ -4,14 +4,14 @@
 #include "../src/Mesh.hpp"
 #include <memory>
 
-class Shaders;
+class Shader;
 
 class MeshRenderer : public Component {
 public:
     std::unique_ptr<Mesh> mesh;
-    Shaders* shader;
+    Shader* shader;
 
-    MeshRenderer(const std::string& path, Shaders* shader);
+    MeshRenderer(const std::string& path, Shader* shader);
 
     void render() override;
 };

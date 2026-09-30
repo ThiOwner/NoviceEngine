@@ -1,11 +1,11 @@
 #include "MeshRenderer.hpp"
 
 #include "Transform.hpp"
-#include "../src/Shaders.hpp"
+#include "../src/Shader.hpp"
 #include "../src/GameObject.hpp"
 #include "../utils/OBJLoader.hpp"
 
-MeshRenderer::MeshRenderer(const std::string& path, Shaders* shader) {
+MeshRenderer::MeshRenderer(const std::string& path, Shader* shader) {
     MeshData data = loadOBJ(path);
     mesh = std::make_unique<Mesh>(data.vertices,data.indices);
     this->shader = shader;
@@ -14,9 +14,7 @@ MeshRenderer::MeshRenderer(const std::string& path, Shaders* shader) {
 void MeshRenderer::render() {
     if (!isActive) {return;}
     Transform* transform = parent->getComponent<Transform>();
-    if (transform != nullptr) {
-        glm::mat4 t = transform->getModelMatrix();
-        shader->setMat4("u_modelMatrix", t);
-    }
+    shader->setMat4("u_modelMatrix", transform->getModelMatrix());
+    shader->use();
     mesh->draw();
 }

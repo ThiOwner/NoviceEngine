@@ -1,24 +1,30 @@
 #include "Window.hpp"
 
+
+Window::Window() {
+    init();
+}
+
+Window::~Window() {
+    if (win) glfwDestroyWindow(win);
+    glfwTerminate();
+}
+
 int Window::init() {
     if (!glfwInit()) {
-        std::cerr << "Failed to initialize GLFW" << std::endl;
-        return -1;
+        throw std::runtime_error("Failed to initialize GLFW");
     }
 
     win = glfwCreateWindow(1600, 800, "NoviceEngine", NULL, NULL);
 
     if (!win) {
-        std::cerr << "Failure during window creation" << std::endl;
-        glfwTerminate();
-        return -1;
+        throw std::runtime_error("Failure during window creation");
     }
 
     glfwMakeContextCurrent(win);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
-        std::cerr << "Failure during GLAD initialization" << std::endl;
-        return -1;
+        throw std::runtime_error("Failure during GLAD initialization");
     }
 
     // Enable depth calculations
@@ -37,5 +43,3 @@ void Window::swapBuffers() { glfwSwapBuffers(win); }
 void Window::pollEvents() { glfwPollEvents(); }
 
 bool Window::shouldClose() { return glfwWindowShouldClose(win); }
-
-void Window::terminate() { glfwTerminate(); }
