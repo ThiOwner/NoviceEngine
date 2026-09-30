@@ -1,5 +1,5 @@
 #define TINYOBJLOADER_IMPLEMENTATION
-#include "../includes/tiny_obj_loader.h"
+#include "../Include/tiny_obj_loader.h"
 
 #include "OBJLoader.hpp"
 #include <iostream>

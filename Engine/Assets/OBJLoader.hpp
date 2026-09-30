@@ -2,7 +2,7 @@
 
 #include <vector>
 #include <string>
-#include "../src/Types.hpp"
+#include "../Engine/Core/Types.hpp"
 
 struct MeshData {
     std::vector<Vertex> vertices;

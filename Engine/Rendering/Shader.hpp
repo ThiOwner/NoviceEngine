@@ -1,7 +1,6 @@
 #pragma once
 
 #include <fstream>
-#include <stdexcept>
 #include "glm/fwd.hpp"
 
 

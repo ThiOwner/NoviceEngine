@@ -4,7 +4,8 @@
 
 #include <string>
 #include <sstream>
-#include "glad/glad.h"
+#include <stdexcept>
+#include "../Include/glad/glad.h"
 #include "glm/gtc/type_ptr.hpp"
 
 Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {

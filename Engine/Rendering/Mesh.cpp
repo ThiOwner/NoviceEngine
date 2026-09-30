@@ -1,7 +1,5 @@
 #include "Mesh.hpp"
-
-#include "glad/glad.h"
-#include "Types.hpp"
+#include "../Core/Types.hpp"
 #include <vector>
 
 Mesh::Mesh(const std::vector<Vertex>& v, const std::vector<GLuint>& i) {
