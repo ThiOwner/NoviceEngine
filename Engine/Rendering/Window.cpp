@@ -1,5 +1,5 @@
 #include "Window.hpp"
-
+#include <iostream>
 
 Window::Window() {
     init();

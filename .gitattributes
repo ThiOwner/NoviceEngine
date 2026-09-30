@@ -2,4 +2,4 @@
 * text=auto
 
 # Ignoring language in includes file
-includes/** linguist-vendored
+Engine/Include linguist-vendored

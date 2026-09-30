@@ -1,9 +1,9 @@
 #include "MeshRenderer.hpp"
 
 #include "Transform.hpp"
-#include "../src/Shader.hpp"
-#include "../src/GameObject.hpp"
-#include "../utils/OBJLoader.hpp"
+#include "../Rendering/Shader.hpp"
+#include "../Scene/GameObject.hpp"
+#include "../Assets/OBJLoader.hpp"
 
 MeshRenderer::MeshRenderer(const std::string& path, Shader* shader) {
     MeshData data = loadOBJ(path);

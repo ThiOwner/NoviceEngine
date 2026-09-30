@@ -3,8 +3,8 @@
 #include <vector>
 #include <memory>
 
-#include "../components/Component.hpp"
-#include "../components/Transform.hpp"
+#include "../Components/Component.hpp"
+#include "../Components/Transform.hpp"
 
 class GameObject {
 public:

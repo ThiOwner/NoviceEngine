@@ -1,7 +1,7 @@
 #pragma once
 
-#include "glad/glad.h"
-#include "Types.hpp"
+#include "../Include/glad/glad.h"
+#include "../Core/Types.hpp"
 #include <vector>
 
 class Mesh {
