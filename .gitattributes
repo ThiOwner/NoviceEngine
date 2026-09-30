@@ -1,2 +1,5 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Ignoring language in includes file
+includes/** linguist-vendored
