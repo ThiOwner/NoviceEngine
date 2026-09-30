@@ -12,8 +12,6 @@ public:
     Window(const Window&) = delete;
     Window& operator=(const Window&) = delete;
 
-    int init();
-
     void clear();
 
     void swapBuffers();
@@ -24,4 +22,6 @@ public:
 
 private:
     GLFWwindow* win = nullptr;
+
+    int init();
 };
