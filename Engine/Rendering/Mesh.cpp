@@ -3,9 +3,9 @@
 #include "../Core/Types.hpp"
 #include <vector>
 
-Mesh::Mesh(const MeshData* meshData){
-    vertices = meshData->vertices;
-    indices = meshData->indices;
+Mesh::Mesh(const MeshData& meshData){
+    vertices = meshData.vertices;
+    indices = meshData.indices;
     initBuffers();
 }
 Mesh::~Mesh() {

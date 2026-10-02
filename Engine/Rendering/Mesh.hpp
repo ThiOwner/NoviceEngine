@@ -5,7 +5,7 @@
 
 class Mesh {
 public:
-    explicit Mesh(const MeshData* meshData);
+    explicit Mesh(const MeshData& meshData);
     ~Mesh();
 
     Mesh(const Mesh&) = delete;

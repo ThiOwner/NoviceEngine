@@ -7,7 +7,7 @@
 #include "../Engine/Assets/AssetManager.hpp"
 
 MeshRenderer::MeshRenderer(const std::string& path, Shader* shader) {
-    this->mesh = std::make_unique<Mesh>(AssetManager::loadMesh(path));
+    this->mesh = AssetManager::loadMesh(path);
     this->shader = shader;
 }
 
