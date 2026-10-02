@@ -74,17 +74,21 @@ target_include_directories(
 set(ENGINE_SOURCES
 
         # ----------------------------------------------------
-        # Scene
+        # Core
         # ----------------------------------------------------
 
-        Engine/Scene/GameObject.cpp
+        Engine/Core/Engine.cpp
+        Engine/Core/Window.cpp
+        Engine/Core/Input.cpp
+        Engine/Core/Time.cpp
+
+        # ----------------------------------------------------
+        # Scene
+        # ----------------------------------------------------
 
         # ----------------------------------------------------
         # Components
         # ----------------------------------------------------
-
-        Engine/Components/Transform.cpp
-        Engine/Components/MeshRenderer.cpp
 
         # ----------------------------------------------------
         # Rendering
@@ -92,7 +96,6 @@ set(ENGINE_SOURCES
 
         Engine/Rendering/Mesh.cpp
         Engine/Rendering/Shader.cpp
-        Engine/Rendering/Window.cpp
 
         # ----------------------------------------------------
         # Assets
@@ -108,21 +111,21 @@ set(ENGINE_HEADERS
         # Core
         # ----------------------------------------------------
 
+        Engine/Core/Engine.hpp
+        Engine/Core/Window.hpp
+        Engine/Core/Input.hpp
+        Engine/Core/Time.hpp
         Engine/Core/Types.hpp
 
         # ----------------------------------------------------
         # Scene
         # ----------------------------------------------------
 
-        Engine/Scene/GameObject.hpp
-
         # ----------------------------------------------------
         # Components
         # ----------------------------------------------------
 
         Engine/Components/Component.hpp
-        Engine/Components/Transform.hpp
-        Engine/Components/MeshRenderer.hpp
 
         # ----------------------------------------------------
         # Rendering
@@ -130,7 +133,6 @@ set(ENGINE_HEADERS
 
         Engine/Rendering/Mesh.hpp
         Engine/Rendering/Shader.hpp
-        Engine/Rendering/Window.hpp
 
         # ----------------------------------------------------
         # Assets

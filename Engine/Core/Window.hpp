@@ -12,12 +12,11 @@ public:
     Window& operator=(const Window&) = delete;
 
     void clear();
-
     void swapBuffers();
-
     void pollEvents();
-
     bool shouldClose();
+
+    GLFWwindow* getWindow();
 
 private:
     GLFWwindow* win = nullptr;
