@@ -2,11 +2,10 @@
 
 #include "../Include/glad/glad.h"
 #include "../Core/Types.hpp"
-#include <vector>
 
 class Mesh {
 public:
-    explicit Mesh(const std::vector<Vertex>& v, const std::vector<GLuint>& i);
+    explicit Mesh(const MeshData* meshData);
     ~Mesh();
 
     Mesh(const Mesh&) = delete;

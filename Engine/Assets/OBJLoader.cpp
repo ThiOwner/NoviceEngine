@@ -1,9 +1,8 @@
 #define TINYOBJLOADER_IMPLEMENTATION
 #include "../Include/tiny_obj_loader.h"
 
-#include "OBJLoader.hpp"
-#include <iostream>
 #include <map>
+#include "OBJLoader.hpp"
 
 MeshData loadOBJ(const std::string& path) {
     tinyobj::ObjReaderConfig readerConfig;

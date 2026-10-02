@@ -98,6 +98,7 @@ set(ENGINE_SOURCES
         # Assets
         # ----------------------------------------------------
 
+        Engine/Assets/AssetManager.cpp
         Engine/Assets/OBJLoader.cpp
 )
 
@@ -136,6 +137,7 @@ set(ENGINE_HEADERS
         # ----------------------------------------------------
 
         Engine/Assets/OBJLoader.hpp
+        Engine/Assets/AssetManager.hpp
 )
 
 add_library(
