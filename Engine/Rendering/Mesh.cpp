@@ -1,10 +1,11 @@
 #include "Mesh.hpp"
+
 #include "../Core/Types.hpp"
 #include <vector>
 
-Mesh::Mesh(const std::vector<Vertex>& v, const std::vector<GLuint>& i) {
-    vertices = v;
-    indices = i;
+Mesh::Mesh(const MeshData& meshData){
+    vertices = meshData.vertices;
+    indices = meshData.indices;
     initBuffers();
 }
 Mesh::~Mesh() {

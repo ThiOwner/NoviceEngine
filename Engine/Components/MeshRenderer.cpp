@@ -4,10 +4,10 @@
 #include "../Rendering/Shader.hpp"
 #include "../Scene/GameObject.hpp"
 #include "../Assets/OBJLoader.hpp"
+#include "../Engine/Assets/AssetManager.hpp"
 
 MeshRenderer::MeshRenderer(const std::string& path, Shader* shader) {
-    MeshData data = loadOBJ(path);
-    mesh = std::make_unique<Mesh>(data.vertices,data.indices);
+    this->mesh = AssetManager::loadMesh(path);
     this->shader = shader;
 }
 
