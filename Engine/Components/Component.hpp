@@ -4,7 +4,7 @@ class GameObject;
 
 class Component {
 public:
-    GameObject* parent = nullptr;
+    GameObject* owner = nullptr;
     bool isActive = true;
 
     virtual ~Component() = default;

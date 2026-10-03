@@ -8,6 +8,7 @@ void GameObject::update(float deltaTime) {
 
     for (auto& component : pendingComponents) {
         components.push_back(std::move(component));
+        component->start();
     }
     pendingComponents.clear();
 

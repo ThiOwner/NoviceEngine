@@ -19,6 +19,7 @@ public:
         );
 
         T* ptr = component.get();
+        ptr->owner = this;
         ptr->awake();
 
         pendingComponents.push_back(std::move(component));

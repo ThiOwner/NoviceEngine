@@ -14,12 +14,6 @@ Mesh::~Mesh() {
     glDeleteBuffers(1, &EBO);
 }
 
-void Mesh::draw() {
-    glBindVertexArray(VAO);
-    glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(indices.size()), GL_UNSIGNED_INT, nullptr);
-    glBindVertexArray(0);
-}
-
 void Mesh::initBuffers() {
     glGenVertexArrays(1, &VAO);
     glGenBuffers(1, &VBO);

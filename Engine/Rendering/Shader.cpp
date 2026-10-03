@@ -14,12 +14,6 @@ Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
 
 Shader::~Shader(){ glDeleteProgram(shaderProgram); }
 
-void Shader::use() const { glUseProgram(shaderProgram); }
-
-void Shader::setMat4 (const std::string &name, const glm::mat4 &mat) const {
-    glUniformMatrix4fv(glGetUniformLocation(shaderProgram, name.c_str()), 1, GL_FALSE, glm::value_ptr(mat));
-}
-
 void Shader::compileShaders(std::string vertexSource, std::string fragmentSource) {
     int  success;
     char infoLog[infoLogSize];
