@@ -7,6 +7,11 @@ void Scene::update(float deltaTime) {
         object->update(deltaTime);
     }
 
+    for (auto& object : pendingObjects) {
+        objects.push_back(std::move(object));
+    }
+    pendingObjects.clear();
+
     for (GameObject* object : objectsToDestroy){
         objects.erase(
         std::remove_if(objects.begin(), objects.end(),

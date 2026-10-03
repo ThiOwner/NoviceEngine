@@ -5,7 +5,7 @@ Input::Input(Window& window): window(window){}
 
 void Input::update() {
     previousKeys = currentKeys;
-    for (int key = 0; key < 512; ++key){
+    for (int key = GLFW_KEY_SPACE; key < GLFW_KEY_LAST+1; ++key){
         currentKeys[key] = glfwGetKey(window.getWindow(), key) == GLFW_PRESS;
     }
 }

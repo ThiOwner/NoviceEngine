@@ -1,5 +1,5 @@
 #pragma once
-#include "../Scene/Scene.hpp"
+#include "Scene/Scene.hpp"
 #include "Window.hpp"
 #include "Input.hpp"
 #include "Time.hpp"
@@ -10,12 +10,12 @@ public:
 
     void run();
 
+    Scene scene;
 private:
     void update();
     void render();
 
     Window window;
-    Scene scene;
     Input input;
     Time time;
 };

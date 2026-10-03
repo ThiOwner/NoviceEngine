@@ -1,5 +1,28 @@
 #include "GameObject.hpp"
+#include <algorithm>
 
 void GameObject::update(float deltaTime) {
-    // Not implementend yet.
+    for (auto& component : components) {
+        component->update(deltaTime);
+    }
+
+    for (auto& component : pendingComponents) {
+        components.push_back(std::move(component));
+    }
+    pendingComponents.clear();
+
+    for (Component* component: componentsToDestroy){
+        components.erase(
+        std::remove_if(components.begin(), components.end(),
+            [component](const auto& ptr)
+            {
+                return ptr.get() == component;
+            }),components.end()
+        );
+    }
+    componentsToDestroy.clear();
+}
+
+void GameObject::removeComponent(Component* component) {
+    componentsToDestroy.push_back(component);
 }

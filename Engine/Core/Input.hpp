@@ -27,9 +27,7 @@ public:
 private:
     Window& window;
 
-    std::array<bool, 512> currentKeys{};
-    std::array<bool, 512> previousKeys{};
-
+    std::array<bool, GLFW_KEY_LAST + 1> currentKeys{}, previousKeys{};
     static int keyToGLFWKey(Key key);
     static int mouseButtonToGLFWMouseButton(MouseButton button);
 };
