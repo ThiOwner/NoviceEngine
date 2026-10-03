@@ -9,14 +9,17 @@ void Engine::run() {
         time.update();
         input.update();
 
+        update();
+
         window.clear();
+        render();
+
         window.swapBuffers();
-        window.pollEvents();
     }
 }
 
 void Engine::update() {
-    // Not implemented yet
+    scene.update(time.getDeltaTime());
 }
 
 void Engine::render() {

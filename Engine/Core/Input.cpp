@@ -47,7 +47,7 @@ int Input::mouseButtonToGLFWMouseButton(const MouseButton button) {
         case MouseButton::Left: return GLFW_MOUSE_BUTTON_LEFT;
         case MouseButton::Right: return GLFW_MOUSE_BUTTON_RIGHT;
         case MouseButton::Middle: return GLFW_MOUSE_BUTTON_MIDDLE;
-        default: return GLFW_KEY_UNKNOWN;
+        default: return -1;
     }
 }
 
