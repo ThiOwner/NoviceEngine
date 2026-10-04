@@ -3,36 +3,36 @@
 #include <algorithm>
 
 void Scene::update(float deltaTime) {
-    for (auto& object : objects){
+    for (auto& object : _objects){
         object->update(deltaTime);
     }
 
-    for (auto& object : pendingObjects) {
-        objects.push_back(std::move(object));
+    for (auto& object : _pendingObjects) {
+        _objects.push_back(std::move(object));
     }
-    pendingObjects.clear();
+    _pendingObjects.clear();
 
-    for (GameObject* object : objectsToDestroy){
-        objects.erase(
-        std::remove_if(objects.begin(), objects.end(),
+    for (GameObject* object : _objectsToDestroy){
+        _objects.erase(
+        std::remove_if(_objects.begin(), _objects.end(),
             [object](const auto& ptr)
             {
                 return ptr.get() == object;
-            }),objects.end()
+            }),_objects.end()
         );
     }
-    objectsToDestroy.clear();
+    _objectsToDestroy.clear();
 }
 
 void Scene::destroyGameObject(GameObject* object) {
-    objectsToDestroy.push_back(object);
+    _objectsToDestroy.push_back(object);
 }
 
 std::vector<GameObject*> Scene::getGameObjects() {
     std::vector<GameObject*> result;
-    result.reserve(objects.size());
+    result.reserve(_objects.size());
 
-    for (auto& object : objects) {
+    for (auto& object : _objects) {
         result.push_back(object.get());
     }
     return result;

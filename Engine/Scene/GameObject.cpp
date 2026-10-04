@@ -2,37 +2,37 @@
 #include <algorithm>
 
 void GameObject::update(float deltaTime) {
-    for (auto& component : components) {
+    for (auto& component : _components) {
         component->update(deltaTime);
     }
 
-    for (auto& component : pendingComponents) {
-        components.push_back(std::move(component));
+    for (auto& component : _pendingComponents) {
+        _components.push_back(std::move(component));
         component->start();
     }
-    pendingComponents.clear();
+    _pendingComponents.clear();
 
-    for (Component* component: componentsToDestroy){
-        components.erase(
-        std::remove_if(components.begin(), components.end(),
+    for (Component* component: _componentsToDestroy){
+        _components.erase(
+        std::remove_if(_components.begin(), _components.end(),
             [component](const auto& ptr)
             {
                 return ptr.get() == component;
-            }),components.end()
+            }),_components.end()
         );
     }
-    componentsToDestroy.clear();
+    _componentsToDestroy.clear();
 }
 
 void GameObject::removeComponent(Component* component) {
-    componentsToDestroy.push_back(component);
+    _componentsToDestroy.push_back(component);
 }
 
 std::vector<Component*> GameObject::getComponents() {
     std::vector<Component*> result;
-    result.reserve(components.size());
+    result.reserve(_components.size());
 
-    for (auto& component : components) {
+    for (auto& component : _components) {
         result.push_back(component.get());
     }
     return result;

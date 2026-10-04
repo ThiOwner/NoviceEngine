@@ -25,9 +25,9 @@ public:
     //float getMouseDeltaY() const;
 
 private:
-    Window& window;
+    Window& _window;
 
-    std::array<bool, GLFW_KEY_LAST + 1> currentKeys{}, previousKeys{};
+    std::array<bool, GLFW_KEY_LAST + 1> _currentKeys{}, _previousKeys{};
     static int keyToGLFWKey(Key key);
     static int mouseButtonToGLFWMouseButton(MouseButton button);
 };

@@ -12,8 +12,8 @@ public:
     Mesh& operator=(const Mesh&) = delete;
 
 private:
-    GLuint VAO{0}, VBO{0}, EBO{0};
-    std::vector<Vertex> vertices;
-    std::vector<GLuint> indices;
+    GLuint _VAO{0}, _VBO{0}, _EBO{0};
+    std::vector<Vertex> _vertices;
+    std::vector<GLuint> _indices;
     void initBuffers();
 };

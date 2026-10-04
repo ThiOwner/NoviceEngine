@@ -1,4 +1,6 @@
 #pragma once
+#include "Assets/AssetManager.hpp"
+#include "Rendering/Renderer.hpp"
 #include "Scene/Scene.hpp"
 #include "Window.hpp"
 #include "Input.hpp"
@@ -15,7 +17,8 @@ private:
     void update();
     void render();
 
-    Window window;
-    Input input;
-    Time time;
+    Renderer _renderer;
+    Window _window;
+    Input _input;
+    Time _time;
 };

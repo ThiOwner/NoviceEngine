@@ -10,7 +10,7 @@ public:
     float getElapsedTime() const;
 
 private:
-    double lastTime;
-    double deltaTime;
-    double elapsedTime;
+    double _lastTime;
+    double _deltaTime;
+    double _elapsedTime;
 };

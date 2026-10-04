@@ -10,7 +10,7 @@
 // Asset Manager class
 class AssetManager {
 public:
-    static std::shared_ptr<Mesh> loadMesh(const std::string& path);
+    static Mesh* loadMesh(const std::string& path);
 
     static std::shared_ptr<Shader> loadShader(const std::string& name,
         const std::string& vertexShaderPath,
@@ -19,6 +19,6 @@ public:
     static std::shared_ptr<Shader> getShader(const std::string& name);
 
 private:
-    static std::unordered_map<std::string, std::shared_ptr<Mesh>> meshes ;
-    static std::unordered_map<std::string, std::shared_ptr<Shader>> shaders;
+    static std::unordered_map<std::string, std::shared_ptr<Mesh>> _meshes ;
+    static std::unordered_map<std::string, std::shared_ptr<Shader>> _shaders;
 };

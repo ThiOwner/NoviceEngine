@@ -1,33 +1,33 @@
 #include "AssetManager.hpp"
 #include "OBJLoader.hpp"
 
-std::unordered_map<std::string, std::shared_ptr<Mesh>> AssetManager::meshes ;
-std::unordered_map<std::string, std::shared_ptr<Shader>> AssetManager::shaders;
+std::unordered_map<std::string, std::shared_ptr<Mesh>> AssetManager::_meshes ;
+std::unordered_map<std::string, std::shared_ptr<Shader>> AssetManager::_shaders;
 
-std::shared_ptr<Mesh> AssetManager::loadMesh(const std::string &path) {
-    auto it = meshes.find(path);
-    if (it != meshes.end()) {
-        return it->second;
+Mesh* AssetManager::loadMesh(const std::string &path) {
+    auto it = _meshes.find(path);
+    if (it != _meshes.end()) {
+        return it->second.get();
     }
 
-    auto [iterator, inserted] = meshes.emplace(
+    auto [iterator, inserted] = _meshes.emplace(
         path,
         std::make_shared<Mesh>(loadOBJ(path))
     );
 
-    return iterator->second;
+    return iterator->second.get();
 }
 
 std::shared_ptr<Shader> AssetManager::loadShader(const std::string& name,
     const std::string& vertexShaderPath,
     const std::string& fragmentShaderPath)
 {
-    auto it = shaders.find(name);
-    if (it != shaders.end()) {
+    auto it = _shaders.find(name);
+    if (it != _shaders.end()) {
         return it->second;
     }
 
-    auto [iterator, inserted] = shaders.emplace(
+    auto [iterator, inserted] = _shaders.emplace(
         name,
         std::make_shared<Shader>(vertexShaderPath, fragmentShaderPath)
     );
@@ -36,8 +36,8 @@ std::shared_ptr<Shader> AssetManager::loadShader(const std::string& name,
 }
 
 std::shared_ptr<Shader> AssetManager::getShader(const std::string& name) {
-    auto it = shaders.find(name);
-    if (it != shaders.end()) {
+    auto it = _shaders.find(name);
+    if (it != _shaders.end()) {
         return it->second;
     }
     throw std::runtime_error("Shader \"" + name + "\" does not exist.");

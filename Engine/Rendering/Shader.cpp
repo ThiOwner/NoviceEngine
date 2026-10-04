@@ -12,7 +12,7 @@ Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
     this->compileShaders(getFileData(vertexPath), getFileData(fragmentPath));
 }
 
-Shader::~Shader(){ glDeleteProgram(shaderProgram); }
+Shader::~Shader(){ glDeleteProgram(_shaderProgram); }
 
 void Shader::compileShaders(const std::string& vertexSource,const std::string& fragmentSource) {
     int  success;
@@ -45,16 +45,16 @@ void Shader::compileShaders(const std::string& vertexSource,const std::string& f
         throw std::runtime_error("Failed to compile fragment shader :" + std::string(infoLog));
     }
 
-    shaderProgram = glCreateProgram();
+    _shaderProgram = glCreateProgram();
 
-    glAttachShader(shaderProgram, vertexShader);
-    glAttachShader(shaderProgram, fragmentShader);
-    glLinkProgram(shaderProgram);
+    glAttachShader(_shaderProgram, vertexShader);
+    glAttachShader(_shaderProgram, fragmentShader);
+    glLinkProgram(_shaderProgram);
 
 
-    glGetProgramiv(shaderProgram, GL_LINK_STATUS, &success);
+    glGetProgramiv(_shaderProgram, GL_LINK_STATUS, &success);
     if(!success) {
-        glGetProgramInfoLog(shaderProgram, infoLogSize, NULL, infoLog);
+        glGetProgramInfoLog(_shaderProgram, infoLogSize, NULL, infoLog);
         throw std::runtime_error("Failed to compile shader program :" + std::string(infoLog));
     }
 

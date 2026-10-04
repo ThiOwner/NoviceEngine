@@ -18,7 +18,7 @@ public:
     GLFWwindow* getWindow();
 
 private:
-    GLFWwindow* win = nullptr;
+    GLFWwindow* _win = nullptr;
 
     int init();
 };

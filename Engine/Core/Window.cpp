@@ -5,7 +5,7 @@ Window::Window() {
     init();
 }
 Window::~Window() {
-    if (win) glfwDestroyWindow(win);
+    if (_win) glfwDestroyWindow(_win);
     glfwTerminate();
 }
 
@@ -14,13 +14,13 @@ int Window::init() {
         throw std::runtime_error("Failed to initialize GLFW");
     }
 
-    win = glfwCreateWindow(1600, 800, "NoviceEngine", NULL, NULL);
+    _win = glfwCreateWindow(1600, 800, "NoviceEngine", NULL, NULL);
 
-    if (!win) {
+    if (!_win) {
         throw std::runtime_error("Failure during window creation");
     }
 
-    glfwMakeContextCurrent(win);
+    glfwMakeContextCurrent(_win);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
         throw std::runtime_error("Failure during GLAD initialization");
@@ -35,8 +35,8 @@ void Window::clear() {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
-void Window::swapBuffers() { glfwSwapBuffers(win); }
+void Window::swapBuffers() { glfwSwapBuffers(_win); }
 void Window::pollEvents() { glfwPollEvents(); }
-bool Window::shouldClose() { return glfwWindowShouldClose(win); }
+bool Window::shouldClose() { return glfwWindowShouldClose(_win); }
 
-GLFWwindow* Window::getWindow() {return win;}
+GLFWwindow* Window::getWindow() {return _win;}

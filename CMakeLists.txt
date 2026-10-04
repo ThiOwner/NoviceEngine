@@ -93,6 +93,8 @@ set(ENGINE_SOURCES
         # Components
         # ----------------------------------------------------
 
+        Engine/Components/MeshRenderer.cpp
+
         # ----------------------------------------------------
         # Rendering
         # ----------------------------------------------------
@@ -133,6 +135,7 @@ set(ENGINE_HEADERS
         # ----------------------------------------------------
 
         Engine/Components/Component.hpp
+        Engine/Components/MeshRenderer.hpp
 
         # ----------------------------------------------------
         # Rendering

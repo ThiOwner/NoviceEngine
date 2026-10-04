@@ -1,32 +1,32 @@
 #include "Input.hpp"
 #include "GLFW\glfw3.h"
 
-Input::Input(Window& window): window(window){}
+Input::Input(Window& window): _window(window){}
 
 void Input::update() {
-    previousKeys = currentKeys;
+    _previousKeys = _currentKeys;
     for (int key = GLFW_KEY_SPACE; key < GLFW_KEY_LAST+1; ++key){
-        currentKeys[key] = glfwGetKey(window.getWindow(), key) == GLFW_PRESS;
+        _currentKeys[key] = glfwGetKey(_window.getWindow(), key) == GLFW_PRESS;
     }
 }
 
 bool Input::isKeyPressed(const Key key) const {
     const int glfwKey = keyToGLFWKey(key);
-    return currentKeys[glfwKey];
+    return _currentKeys[glfwKey];
 }
 
 bool Input::isKeyJustPressed(const Key key) const {
     const int glfwKey = keyToGLFWKey(key);
-    return currentKeys[glfwKey]&&!previousKeys[glfwKey];
+    return _currentKeys[glfwKey]&&!_previousKeys[glfwKey];
 }
 
 bool Input::isKeyJustReleased(const Key key) const {
     const int glfwKey = keyToGLFWKey(key);
-    return !currentKeys[glfwKey]&&previousKeys[glfwKey];
+    return !_currentKeys[glfwKey]&&_previousKeys[glfwKey];
 }
 
 bool Input::isMouseButtonPressed(MouseButton button) const {
-    return glfwGetMouseButton(window.getWindow(), mouseButtonToGLFWMouseButton(button)) == GLFW_PRESS;
+    return glfwGetMouseButton(_window.getWindow(), mouseButtonToGLFWMouseButton(button)) == GLFW_PRESS;
 }
 
 // Static methods

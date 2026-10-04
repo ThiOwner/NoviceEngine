@@ -18,7 +18,7 @@ public:
         );
 
         T* ptr = object.get();
-        pendingObjects.push_back(std::move(object));
+        _pendingObjects.push_back(std::move(object));
         return ptr;
     }
 
@@ -27,7 +27,7 @@ public:
     std::vector<GameObject*> getGameObjects();
 
 private:
-    std::vector<std::unique_ptr<GameObject>> objects;
-    std::vector<std::unique_ptr<GameObject>> pendingObjects;
-    std::vector<GameObject*> objectsToDestroy;
+    std::vector<std::unique_ptr<GameObject>> _objects;
+    std::vector<std::unique_ptr<GameObject>> _pendingObjects;
+    std::vector<GameObject*> _objectsToDestroy;
 };

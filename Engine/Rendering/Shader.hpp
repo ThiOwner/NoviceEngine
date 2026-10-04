@@ -13,7 +13,7 @@ public:
     Shader& operator=(const Shader&) = delete;
 
 private:
-    unsigned int shaderProgram = 0;
+    unsigned int _shaderProgram = 0;
 
     void compileShaders(const std::string& vertexSource,const std::string& fragmentSource);
 

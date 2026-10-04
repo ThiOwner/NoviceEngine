@@ -1,27 +1,30 @@
 #include "Engine.hpp"
 
-Engine::Engine(): window(),input(window){}
+Engine::Engine(): _window(),_input(_window){
+    // Compiling shaders
+    AssetManager::loadShader("default","Assets/Shaders/default.vert","Assets/Shaders/default.frag");
+}
 
 void Engine::run() {
-    while (!window.shouldClose()) {
-        window.pollEvents();
+    while (!_window.shouldClose()) {
+        _window.pollEvents();
 
-        time.update();
-        input.update();
+        _time.update();
+        _input.update();
 
         update();
 
-        window.clear();
+        _window.clear();
         render();
 
-        window.swapBuffers();
+        _window.swapBuffers();
     }
 }
 
 void Engine::update() {
-    scene.update(time.getDeltaTime());
+    scene.update(_time.getDeltaTime());
 }
 
 void Engine::render() {
-    // Not implemented yet
+    _renderer.render(scene);
 }

@@ -22,7 +22,7 @@ public:
         ptr->owner = this;
         ptr->awake();
 
-        pendingComponents.push_back(std::move(component));
+        _pendingComponents.push_back(std::move(component));
         return ptr;
     }
 
@@ -31,7 +31,7 @@ public:
     std::vector<Component*> getComponents();
 
 private:
-    std::vector<std::unique_ptr<Component>> components;
-    std::vector<std::unique_ptr<Component>> pendingComponents;
-    std::vector<Component*> componentsToDestroy;
+    std::vector<std::unique_ptr<Component>> _components;
+    std::vector<std::unique_ptr<Component>> _pendingComponents;
+    std::vector<Component*> _componentsToDestroy;
 };
