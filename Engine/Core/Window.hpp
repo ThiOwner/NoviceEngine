@@ -4,7 +4,7 @@
 
 class Window {
 public:
-    Window();
+    Window(float width = 1600, float height = 800);
     ~Window();
 
     Window(const Window&) = delete;
@@ -17,8 +17,12 @@ public:
 
     GLFWwindow* getWindow();
 
+    float getAspectRatio();
+
 private:
     GLFWwindow* _win = nullptr;
+
+    float _width = 0.f, _height = 0.f;
 
     int init();
 };

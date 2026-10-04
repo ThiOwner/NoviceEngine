@@ -2,6 +2,7 @@
 #include "Scene/GameObject.hpp"
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <cassert>
 
 Camera::Camera(float fov, float near, float far) : _fov(fov), _near(near), _far(far) {}
 

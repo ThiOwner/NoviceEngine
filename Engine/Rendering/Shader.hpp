@@ -15,6 +15,8 @@ public:
     void bind();
     void unbind();
 
+    void setMat4(const std::string& name, const glm::mat4& matrix);
+
 private:
     unsigned int _shaderProgram = 0;
 

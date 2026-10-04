@@ -26,5 +26,5 @@ void Engine::update() {
 }
 
 void Engine::render() {
-    _renderer.render(scene);
+    _renderer.render(scene,_window.getAspectRatio());
 }

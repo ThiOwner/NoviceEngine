@@ -18,6 +18,11 @@ void Shader::bind(){ glUseProgram(_shaderProgram); }
 
 void Shader::unbind(){ glUseProgram(0); }
 
+// TODO : adding a cache for storing already fetched uniforms.
+void Shader::setMat4(const std::string &name, const glm::mat4 &matrix) {
+     glUniformMatrix4fv(glGetUniformLocation(_shaderProgram, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));
+}
+
 void Shader::compileShaders(const std::string& vertexSource,const std::string& fragmentSource) {
     int  success;
     char infoLog[infoLogSize];

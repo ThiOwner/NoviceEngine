@@ -4,5 +4,5 @@
 
 class Renderer {
 public:
-    void render(Scene& scene);
+    void render(Scene& scene, float aspectRatio);
 };
