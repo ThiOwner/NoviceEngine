@@ -13,6 +13,8 @@ void Renderer::render(Scene& scene, float aspectRatio) {
     const glm::mat4 projectionMatrix = activeCamera->getProjectionMatrix(aspectRatio);
 
     auto* shader = AssetManager::getShader("default");
+    shader->bind();
+
     shader->setMat4("u_projection", projectionMatrix);
     shader->setMat4("u_view", viewMatrix);
 
@@ -25,10 +27,9 @@ void Renderer::render(Scene& scene, float aspectRatio) {
         glm::mat4 modelMatrix = object->getTransform()->getModelMatrix();
         shader->setMat4("u_model", modelMatrix);
 
-        shader->bind();
         glBindVertexArray(mesh->getVAO());
         glDrawElements(GL_TRIANGLES,mesh->getIndexCount(),GL_UNSIGNED_INT,nullptr);
         glBindVertexArray(0);
-        shader->unbind();
     }
+    shader->unbind();
 }

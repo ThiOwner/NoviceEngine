@@ -14,7 +14,7 @@ int main() {
 
         auto* teapot = engine.scene.addGameObject<GameObject>();
         teapot->addComponent<MeshRenderer>(AssetManager::loadMesh("Assets/Models/utah_teapot.obj"));
-        teapot->getTransform()->setPosition(glm::vec3(0.0f,0.0f,10.0f));
+        teapot->getTransform()->setPosition(glm::vec3(0.0f,-1.0f,10.0f));
 
         engine.run();
 
