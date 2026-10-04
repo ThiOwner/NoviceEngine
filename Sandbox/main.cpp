@@ -5,10 +5,11 @@
 int main() {
     try {
         Engine engine;
-        engine.run();
 
         auto* cube = engine.scene.addGameObject<GameObject>();
         cube->addComponent<MeshRenderer>(AssetManager::loadMesh("Assets/Models/cube.obj"));
+
+        engine.run();
 
     } catch (std::exception& e) {
         std::cerr << e.what() << std::endl;
