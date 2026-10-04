@@ -14,6 +14,10 @@ Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
 
 Shader::~Shader(){ glDeleteProgram(_shaderProgram); }
 
+void Shader::bind(){ glUseProgram(_shaderProgram); }
+
+void Shader::unbind(){ glUseProgram(0); }
+
 void Shader::compileShaders(const std::string& vertexSource,const std::string& fragmentSource) {
     int  success;
     char infoLog[infoLogSize];

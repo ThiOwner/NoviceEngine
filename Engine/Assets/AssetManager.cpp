@@ -35,10 +35,10 @@ std::shared_ptr<Shader> AssetManager::loadShader(const std::string& name,
     return iterator->second;
 }
 
-std::shared_ptr<Shader> AssetManager::getShader(const std::string& name) {
+Shader* AssetManager::getShader(const std::string& name) {
     auto it = _shaders.find(name);
     if (it != _shaders.end()) {
-        return it->second;
+        return it->second.get();
     }
     throw std::runtime_error("Shader \"" + name + "\" does not exist.");
 }

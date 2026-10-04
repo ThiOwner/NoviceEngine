@@ -28,7 +28,15 @@ public:
 
     void removeComponent(Component* component);
 
-    std::vector<Component*> getComponents();
+    template<typename T>
+    T* getComponent() {
+        for (const auto& component : _components) {
+            if (T* castedComponent = dynamic_cast<T*>(component.get())) {
+                return castedComponent;
+            }
+        }
+        return nullptr;
+    }
 
 private:
     std::vector<std::unique_ptr<Component>> _components;

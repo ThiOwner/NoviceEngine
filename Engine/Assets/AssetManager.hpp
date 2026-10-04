@@ -16,7 +16,7 @@ public:
         const std::string& vertexShaderPath,
         const std::string& fragmentShaderPath);
 
-    static std::shared_ptr<Shader> getShader(const std::string& name);
+    static Shader* getShader(const std::string& name);
 
 private:
     static std::unordered_map<std::string, std::shared_ptr<Mesh>> _meshes ;

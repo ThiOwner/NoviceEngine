@@ -35,3 +35,11 @@ void Mesh::initBuffers() {
 
     glBindVertexArray(0);
 }
+
+GLuint Mesh::getVAO() {
+    return _VAO;
+}
+
+int Mesh::getIndexCount() {
+    return _indices.size();
+}
