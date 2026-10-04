@@ -2,7 +2,7 @@
 
 #include <memory>
 #include <vector>
-#include "Components/Component.hpp"
+#include "Components/Transform.hpp"
 
 class GameObject {
 public:
@@ -37,6 +37,10 @@ public:
         }
         return nullptr;
     }
+
+    Transform* getTransform();
+
+    Transform transform;
 
 private:
     std::vector<std::unique_ptr<Component>> _components;

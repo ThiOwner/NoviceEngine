@@ -37,3 +37,7 @@ std::vector<GameObject*> Scene::getGameObjects() {
     }
     return result;
 }
+
+Camera* Scene::getActiveCamera() const { return _activeCamera; }
+
+void Scene::setActiveCamera(Camera* activeCamera) { _activeCamera = activeCamera; }

@@ -6,8 +6,8 @@ int main() {
     try {
         Engine engine;
 
-        auto* cube = engine.scene.addGameObject<GameObject>();
-        cube->addComponent<MeshRenderer>(AssetManager::loadMesh("Assets/Models/cube.obj"));
+        auto* teapot = engine.scene.addGameObject<GameObject>();
+        teapot->addComponent<MeshRenderer>(AssetManager::loadMesh("Assets/Models/utah_teapot.obj"));
 
         engine.run();
 

@@ -28,3 +28,7 @@ void GameObject::update(float deltaTime) {
 void GameObject::removeComponent(Component* component) {
     _componentsToDestroy.push_back(component);
 }
+
+Transform* GameObject::getTransform() {
+    return &transform;
+}

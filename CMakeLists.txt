@@ -93,6 +93,8 @@ set(ENGINE_SOURCES
         # Components
         # ----------------------------------------------------
 
+        Engine/Components/Camera.cpp
+        Engine/Components/Transform.cpp
         Engine/Components/MeshRenderer.cpp
 
         # ----------------------------------------------------
@@ -134,7 +136,9 @@ set(ENGINE_HEADERS
         # Components
         # ----------------------------------------------------
 
+        Engine/Components/Camera.hpp
         Engine/Components/Component.hpp
+        Engine/Components/Transform.hpp
         Engine/Components/MeshRenderer.hpp
 
         # ----------------------------------------------------
