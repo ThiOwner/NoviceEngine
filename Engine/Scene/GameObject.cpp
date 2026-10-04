@@ -27,3 +27,13 @@ void GameObject::update(float deltaTime) {
 void GameObject::removeComponent(Component* component) {
     componentsToDestroy.push_back(component);
 }
+
+std::vector<Component*> GameObject::getComponents() {
+    std::vector<Component*> result;
+    result.reserve(components.size());
+
+    for (auto& component : components) {
+        result.push_back(component.get());
+    }
+    return result;
+}

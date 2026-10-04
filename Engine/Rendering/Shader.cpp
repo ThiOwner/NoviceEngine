@@ -14,11 +14,11 @@ Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
 
 Shader::~Shader(){ glDeleteProgram(shaderProgram); }
 
-void Shader::compileShaders(std::string vertexSource, std::string fragmentSource) {
+void Shader::compileShaders(const std::string& vertexSource,const std::string& fragmentSource) {
     int  success;
     char infoLog[infoLogSize];
 
-    unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
+    const unsigned int vertexShader = glCreateShader(GL_VERTEX_SHADER);
 
     const GLchar* vertexSrc = vertexSource.c_str();
     glShaderSource(vertexShader, 1, &vertexSrc, nullptr);
@@ -32,7 +32,7 @@ void Shader::compileShaders(std::string vertexSource, std::string fragmentSource
         throw std::runtime_error("Failed to compile vertex shader :" + std::string(infoLog));
     }
 
-    unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
+    const unsigned int fragmentShader = glCreateShader(GL_FRAGMENT_SHADER);
 
     const GLchar* fragmentSrc = fragmentSource.c_str();
     glShaderSource(fragmentShader, 1, &fragmentSrc, nullptr);

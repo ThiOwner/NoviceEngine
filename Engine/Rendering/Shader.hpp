@@ -15,7 +15,7 @@ public:
 private:
     unsigned int shaderProgram = 0;
 
-    void compileShaders(std::string vertexSource, std::string fragmentSource);
+    void compileShaders(const std::string& vertexSource,const std::string& fragmentSource);
 
     static std::string getFileData(const std::string& filepath);
 };

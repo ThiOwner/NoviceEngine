@@ -27,3 +27,13 @@ void Scene::update(float deltaTime) {
 void Scene::destroyGameObject(GameObject* object) {
     objectsToDestroy.push_back(object);
 }
+
+std::vector<GameObject*> Scene::getGameObjects() {
+    std::vector<GameObject*> result;
+    result.reserve(objects.size());
+
+    for (auto& object : objects) {
+        result.push_back(object.get());
+    }
+    return result;
+}

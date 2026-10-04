@@ -24,6 +24,8 @@ public:
 
     void destroyGameObject(GameObject* object);
 
+    std::vector<GameObject*> getGameObjects();
+
 private:
     std::vector<std::unique_ptr<GameObject>> objects;
     std::vector<std::unique_ptr<GameObject>> pendingObjects;

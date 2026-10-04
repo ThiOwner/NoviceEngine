@@ -28,6 +28,8 @@ public:
 
     void removeComponent(Component* component);
 
+    std::vector<Component*> getComponents();
+
 private:
     std::vector<std::unique_ptr<Component>> components;
     std::vector<std::unique_ptr<Component>> pendingComponents;

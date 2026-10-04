@@ -99,6 +99,7 @@ set(ENGINE_SOURCES
 
         Engine/Rendering/Mesh.cpp
         Engine/Rendering/Shader.cpp
+        Engine/Rendering/Renderer.cpp
 
         # ----------------------------------------------------
         # Assets
@@ -139,6 +140,7 @@ set(ENGINE_HEADERS
 
         Engine/Rendering/Mesh.hpp
         Engine/Rendering/Shader.hpp
+        Engine/Rendering/Renderer.hpp
 
         # ----------------------------------------------------
         # Assets
