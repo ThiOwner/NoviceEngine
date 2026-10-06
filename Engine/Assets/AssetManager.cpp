@@ -1,5 +1,6 @@
 #include "AssetManager.hpp"
 #include "OBJLoader.hpp"
+#include <stdexcept>
 
 std::unordered_map<std::string, std::shared_ptr<Mesh>> AssetManager::_meshes ;
 std::unordered_map<std::string, std::shared_ptr<Shader>> AssetManager::_shaders;
@@ -41,4 +42,9 @@ Shader* AssetManager::getShader(const std::string& name) {
         return it->second.get();
     }
     throw std::runtime_error("Shader \"" + name + "\" does not exist.");
+}
+
+void AssetManager::clear() {
+    _meshes.clear();
+    _shaders.clear();
 }

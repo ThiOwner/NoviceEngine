@@ -3,6 +3,7 @@
 #include "GameObject.hpp"
 #include "Components/Camera.hpp"
 #include <memory>
+#include <string>
 #include <vector>
 
 class Scene {
@@ -35,5 +36,5 @@ private:
     std::vector<std::unique_ptr<GameObject>> _pendingObjects;
     std::vector<GameObject*> _objectsToDestroy;
 
-    Camera* _activeCamera;
+    Camera* _activeCamera = nullptr;
 };

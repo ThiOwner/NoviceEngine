@@ -1,6 +1,6 @@
 #include "Shader.hpp"
 
-#define infoLogSize 1024
+constexpr int infoLogSize = 1024;
 
 #include <string>
 #include <sstream>

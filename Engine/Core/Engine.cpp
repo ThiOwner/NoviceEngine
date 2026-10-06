@@ -18,6 +18,7 @@ void Engine::run() {
 
         _window.swapBuffers();
     }
+    AssetManager::clear();
 }
 
 void Engine::update() {

@@ -18,6 +18,8 @@ public:
 
     static Shader* getShader(const std::string& name);
 
+    static void clear();
+
 private:
     static std::unordered_map<std::string, std::shared_ptr<Mesh>> _meshes ;
     static std::unordered_map<std::string, std::shared_ptr<Shader>> _shaders;

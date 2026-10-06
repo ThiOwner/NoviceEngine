@@ -1,5 +1,4 @@
 #include "Input.hpp"
-#include "GLFW\glfw3.h"
 
 Input::Input(Window& window): _window(window){}
 

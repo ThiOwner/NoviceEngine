@@ -1,5 +1,6 @@
 #include "Window.hpp"
 #include <iostream>
+#include <stdexcept>
 
 Window::Window(float width, float height) : _width(width), _height(height) { init(); }
 Window::~Window() {
@@ -18,6 +19,7 @@ int Window::init() {
         throw std::runtime_error("Failure during window creation");
     }
 
+    glfwSwapInterval(1);
     glfwMakeContextCurrent(_win);
 
     if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
