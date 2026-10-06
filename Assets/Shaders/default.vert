@@ -13,7 +13,7 @@ layout (location = 1) in vec3 aNormal;
 void main()
 {
     mat3 normalMatrix = transpose(inverse(mat3(u_view * u_model)));
-    vNormal = normalize(normalMatrix * aNormal);
+    vNormal = normalMatrix * aNormal;
 
     vPosition = vec3(u_view * u_model * vec4(aPos, 1.0));
 

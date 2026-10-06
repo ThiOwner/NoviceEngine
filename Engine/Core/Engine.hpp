@@ -1,5 +1,4 @@
 #pragma once
-#include "Assets/AssetManager.hpp"
 #include "Rendering/Renderer.hpp"
 #include "Scene/Scene.hpp"
 #include "Window.hpp"

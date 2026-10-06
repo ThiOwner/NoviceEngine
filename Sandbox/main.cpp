@@ -1,8 +1,10 @@
 #include <iostream>
 #include "../Engine/Core/Engine.hpp"
-#include "../Engine/Components/MeshRenderer.hpp"
+#include "Components/FlyCameraControl.hpp"
 #include "../Engine/Components/Camera.hpp"
 #include "../Engine/Rendering/Material.hpp"
+#include "../Engine/Assets/AssetManager.hpp"
+#include "../Engine/Components/MeshRenderer.hpp"
 
 int main() {
     try {
@@ -10,7 +12,9 @@ int main() {
 
         auto* camera = engine.scene.addGameObject<GameObject>();
         auto* cameraComponent = camera->addComponent<Camera>(45.0f,0.1f,1000.0f);
-        cameraComponent->cameraOffset.setPosition(glm::vec3(0.0f,0.0f,-2.0f));
+        camera->getTransform()->setPosition(glm::vec3(0.0f, 0.0f, -2.0f));
+        camera->addComponent<FlyCameraControl>();
+
         engine.scene.setActiveCamera(cameraComponent);
 
         Material defaultMaterial(AssetManager::getShader("default"));
@@ -18,6 +22,7 @@ int main() {
         auto* teapot = engine.scene.addGameObject<GameObject>();
         teapot->addComponent<MeshRenderer>(AssetManager::loadMesh("Assets/Models/utah_teapot.obj"),&defaultMaterial);
         teapot->getTransform()->setPosition(glm::vec3(0.0f,-1.0f,10.0f));
+        teapot->getTransform()->setScale(glm::vec3(1.0f));
 
         engine.run();
 

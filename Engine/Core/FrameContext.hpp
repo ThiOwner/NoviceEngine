@@ -5,5 +5,5 @@ class Input;
 struct FrameContext {
     float deltaTime;
     float ElapsedTime;
-    Input* input;
+    Input& input;
 };

@@ -12,5 +12,5 @@ public:
 
     virtual void awake() {} // Called at the creation.
     virtual void start() {} // Called at the first frame.
-    virtual void update(FrameContext& context) {} // Called every frame
+    virtual void update(const FrameContext& context) {} // Called every frame
 };

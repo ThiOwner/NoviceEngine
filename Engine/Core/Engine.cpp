@@ -1,5 +1,6 @@
 #include "Engine.hpp"
 #include "FrameContext.hpp"
+#include "Assets/AssetManager.hpp"
 
 Engine::Engine(): _window(),_input(_window){
     AssetManager::loadShader("default","Assets/Shaders/default.vert","Assets/Shaders/default.frag");
@@ -25,7 +26,7 @@ void Engine::run() {
 
 void Engine::update() {
     if (_input.isKeyJustPressed(Key::Escape)) _window.close();
-    FrameContext context{ _time.getDeltaTime(), _time.getElapsedTime(), &_input };
+    FrameContext context{ _time.getDeltaTime(), _time.getElapsedTime(), _input };
     scene.update(context);
 }
 

@@ -96,6 +96,7 @@ set(ENGINE_SOURCES
         Engine/Components/Camera.cpp
         Engine/Components/Transform.cpp
         Engine/Components/MeshRenderer.cpp
+        Engine/Components/FlyCameraControl.cpp
 
         # ----------------------------------------------------
         # Rendering
@@ -125,6 +126,7 @@ set(ENGINE_HEADERS
         Engine/Core/Input.hpp
         Engine/Core/Time.hpp
         Engine/Core/Types.hpp
+        Engine/Core/FrameContext.hpp
 
         # ----------------------------------------------------
         # Scene
@@ -141,6 +143,7 @@ set(ENGINE_HEADERS
         Engine/Components/Component.hpp
         Engine/Components/Transform.hpp
         Engine/Components/MeshRenderer.hpp
+        Engine/Components/FlyCameraControl.hpp
 
         # ----------------------------------------------------
         # Rendering

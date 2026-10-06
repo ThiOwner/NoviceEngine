@@ -10,7 +10,7 @@ public:
     glm::mat4 getViewMatrix() const;
     glm::mat4 getProjectionMatrix(float aspectRatio) const;
 
-    Transform cameraOffset;
+    static glm::vec3 forwardFromAngles(float pitchDeg, float yawDeg);
 
 private:
     float _fov;
