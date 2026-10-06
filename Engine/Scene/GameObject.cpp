@@ -1,9 +1,9 @@
 #include "GameObject.hpp"
 #include <algorithm>
 
-void GameObject::update(float deltaTime) {
+void GameObject::update(FrameContext& context) {
     for (auto& component : _components) {
-        component->update(deltaTime);
+        component->update(context);
     }
 
     for (auto& component : _pendingComponents) {

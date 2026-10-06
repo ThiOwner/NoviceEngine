@@ -1,4 +1,5 @@
 #pragma once
+#include "Core/FrameContext.hpp"
 
 class GameObject;
 
@@ -11,5 +12,5 @@ public:
 
     virtual void awake() {} // Called at the creation.
     virtual void start() {} // Called at the first frame.
-    virtual void update(float deltaTime) {} // Called every frame
+    virtual void update(FrameContext& context) {} // Called every frame
 };

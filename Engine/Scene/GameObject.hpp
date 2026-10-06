@@ -2,6 +2,7 @@
 
 #include <memory>
 #include <vector>
+#include "Core/FrameContext.hpp"
 #include "Components/Transform.hpp"
 
 class GameObject {
@@ -9,7 +10,7 @@ public:
     GameObject() = default;
     virtual ~GameObject() = default;
 
-    virtual void update(float deltaTime);
+    virtual void update(FrameContext& context);
 
     template<typename T, typename... Args>
     T* addComponent(Args&&... args) {

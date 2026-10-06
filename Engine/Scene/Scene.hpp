@@ -1,6 +1,7 @@
 #pragma once
 
 #include "GameObject.hpp"
+#include "Core/FrameContext.hpp"
 #include "Components/Camera.hpp"
 #include <memory>
 #include <string>
@@ -10,7 +11,7 @@ class Scene {
 public:
     Scene() = default;
 
-    void update(float deltaTime);
+    void update(FrameContext& context);
 
     template<typename T, typename... Args>
     T* addGameObject(Args&&... args) {

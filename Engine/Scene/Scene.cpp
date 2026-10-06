@@ -3,9 +3,9 @@
 #include <algorithm>
 #include <stdexcept>
 
-void Scene::update(float deltaTime) {
+void Scene::update(FrameContext& context) {
     for (auto& object : _objects){
-        object->update(deltaTime);
+        object->update(context);
     }
 
     for (auto& object : _pendingObjects) {

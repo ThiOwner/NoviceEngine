@@ -1,4 +1,5 @@
 #include "Engine.hpp"
+#include "FrameContext.hpp"
 
 Engine::Engine(): _window(),_input(_window){
     AssetManager::loadShader("default","Assets/Shaders/default.vert","Assets/Shaders/default.frag");
@@ -22,7 +23,8 @@ void Engine::run() {
 }
 
 void Engine::update() {
-    scene.update(_time.getDeltaTime());
+    FrameContext context{ _time.getDeltaTime(), _time.getElapsedTime(), &_input };
+    scene.update(context);
 }
 
 void Engine::render() {
