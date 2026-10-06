@@ -3,6 +3,7 @@
 
 Engine::Engine(): _window(),_input(_window){
     AssetManager::loadShader("default","Assets/Shaders/default.vert","Assets/Shaders/default.frag");
+    _window.setCursorCaptured(true);
 }
 
 void Engine::run() {
@@ -23,6 +24,7 @@ void Engine::run() {
 }
 
 void Engine::update() {
+    if (_input.isKeyJustPressed(Key::Escape)) _window.close();
     FrameContext context{ _time.getDeltaTime(), _time.getElapsedTime(), &_input };
     scene.update(context);
 }

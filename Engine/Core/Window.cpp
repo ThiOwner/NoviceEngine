@@ -46,3 +46,9 @@ bool Window::shouldClose() { return glfwWindowShouldClose(_win); }
 GLFWwindow* Window::getWindow() { return _win; }
 
 float Window::getAspectRatio() { return _width / _height; }
+
+void Window::setCursorCaptured(bool captured) {
+    glfwSetInputMode(_win, GLFW_CURSOR, captured ? GLFW_CURSOR_DISABLED : GLFW_CURSOR_NORMAL);
+}
+
+void Window::close() { glfwSetWindowShouldClose(_win, GLFW_TRUE); }

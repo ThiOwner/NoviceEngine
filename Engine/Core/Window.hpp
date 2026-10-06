@@ -19,6 +19,10 @@ public:
 
     float getAspectRatio();
 
+    void setCursorCaptured(bool captured);
+
+    void close();
+
 private:
     GLFWwindow* _win = nullptr;
 
