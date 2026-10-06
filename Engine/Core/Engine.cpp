@@ -1,7 +1,6 @@
 #include "Engine.hpp"
 
 Engine::Engine(): _window(),_input(_window){
-    // Compiling shaders
     AssetManager::loadShader("default","Assets/Shaders/default.vert","Assets/Shaders/default.frag");
 }
 

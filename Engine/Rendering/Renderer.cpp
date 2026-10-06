@@ -1,8 +1,6 @@
 #include "Renderer.hpp"
 #include "Scene/GameObject.hpp"
 #include "Components/MeshRenderer.hpp"
-// TODO : Create material class for the future
-#include "Assets/AssetManager.hpp"
 #include <vector>
 
 void Renderer::render(Scene& scene, float aspectRatio) {
@@ -12,16 +10,17 @@ void Renderer::render(Scene& scene, float aspectRatio) {
     const glm::mat4 viewMatrix = activeCamera->getViewMatrix();
     const glm::mat4 projectionMatrix = activeCamera->getProjectionMatrix(aspectRatio);
 
-    auto* shader = AssetManager::getShader("default");
-    shader->bind();
-
-    shader->setMat4("u_projection", projectionMatrix);
-    shader->setMat4("u_view", viewMatrix);
-
     for (auto* object : objects) {
         auto* meshRenderer = object->getComponent<MeshRenderer>();
         if (meshRenderer == nullptr)
             continue;
+
+        auto* material = meshRenderer->getMaterial();
+        material->bind();
+        auto* shader = material->getShader();
+
+        shader->setMat4("u_projection", projectionMatrix);
+        shader->setMat4("u_view", viewMatrix);
 
         auto* mesh = meshRenderer->getMesh();
         glm::mat4 modelMatrix = object->getTransform()->getModelMatrix();
@@ -30,6 +29,7 @@ void Renderer::render(Scene& scene, float aspectRatio) {
         glBindVertexArray(mesh->getVAO());
         glDrawElements(GL_TRIANGLES,mesh->getIndexCount(),GL_UNSIGNED_INT,nullptr);
         glBindVertexArray(0);
+
+        material->unbind();
     }
-    shader->unbind();
 }

@@ -19,8 +19,26 @@ void Shader::bind(){ glUseProgram(_shaderProgram); }
 void Shader::unbind(){ glUseProgram(0); }
 
 // TODO : adding a cache for storing already fetched uniforms.
-void Shader::setMat4(const std::string &name, const glm::mat4 &matrix) {
-     glUniformMatrix4fv(glGetUniformLocation(_shaderProgram, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));
+int Shader::setMat4(const std::string &name, const glm::mat4 &matrix) {
+    GLint loc = glGetUniformLocation(_shaderProgram, name.c_str());
+    if (loc != -1) {
+        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(matrix));
+    } else return -1;
+    return 0;
+}
+int Shader::setVec3(const std::string& name, const glm::vec3& vector) {
+    GLint loc = glGetUniformLocation(_shaderProgram, name.c_str());
+    if (loc != -1) {
+        glUniform3fv(loc, 1, &vector[0]);
+    }
+    return 0;
+}
+int Shader::setFloat(const std::string& name, const float value) {
+    GLint loc = glGetUniformLocation(_shaderProgram, name.c_str());
+    if (loc != -1) {
+        glUniform1f(loc, value);
+    } else return -1;
+    return 0;
 }
 
 void Shader::compileShaders(const std::string& vertexSource,const std::string& fragmentSource) {

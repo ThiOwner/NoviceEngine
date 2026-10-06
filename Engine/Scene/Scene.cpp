@@ -1,6 +1,7 @@
 #include "Scene.hpp"
 
 #include <algorithm>
+#include <stdexcept>
 
 void Scene::update(float deltaTime) {
     for (auto& object : _objects){
@@ -38,6 +39,11 @@ std::vector<GameObject*> Scene::getGameObjects() {
     return result;
 }
 
-Camera* Scene::getActiveCamera() const { return _activeCamera; }
+Camera* Scene::getActiveCamera() const {
+    if (_activeCamera == nullptr) {
+        throw std::runtime_error("Asking for the scene's active camera but no camera as been set.");
+    }
+    return _activeCamera;
+}
 
 void Scene::setActiveCamera(Camera* activeCamera) { _activeCamera = activeCamera; }
