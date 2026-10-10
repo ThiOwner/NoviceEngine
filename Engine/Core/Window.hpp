@@ -29,4 +29,8 @@ private:
     float _width = 0.f, _height = 0.f;
 
     int init();
+
+    static void framebufferSizeCallback(GLFWwindow* win, int width, int height);
+
+    void onFramebufferResize(int width, int height);
 };

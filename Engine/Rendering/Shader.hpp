@@ -1,8 +1,8 @@
 #pragma once
-
-#include <fstream>
+#include <map>
+#include <string>
 #include "glm/fwd.hpp"
-
+#include "../Include/glad/glad.h"
 
 class Shader {
 public:
@@ -12,7 +12,7 @@ public:
     Shader(const Shader&) = delete;
     Shader& operator=(const Shader&) = delete;
 
-    Shader(Shader** other) = delete;
+    Shader(Shader&& other) = delete;
     Shader& operator=(Shader&& other) = delete;
 
     void bind();
@@ -24,6 +24,8 @@ public:
 
 private:
     unsigned int _shaderProgram = 0;
+
+    std::map<std::string, GLint> _fetchedUniforms;
 
     void compileShaders(const std::string& vertexSource,const std::string& fragmentSource);
 

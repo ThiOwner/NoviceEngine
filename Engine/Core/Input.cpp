@@ -19,16 +19,19 @@ void Input::update() {
 
 bool Input::isKeyPressed(const Key key) const {
     const int glfwKey = keyToGLFWKey(key);
+    if (glfwKey == GLFW_KEY_UNKNOWN) return false;
     return _currentKeys[glfwKey];
 }
 
 bool Input::isKeyJustPressed(const Key key) const {
     const int glfwKey = keyToGLFWKey(key);
+    if (glfwKey == GLFW_KEY_UNKNOWN) return false;
     return _currentKeys[glfwKey]&&!_previousKeys[glfwKey];
 }
 
 bool Input::isKeyJustReleased(const Key key) const {
     const int glfwKey = keyToGLFWKey(key);
+    if (glfwKey == GLFW_KEY_UNKNOWN) return false;
     return !_currentKeys[glfwKey]&&_previousKeys[glfwKey];
 }
 

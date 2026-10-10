@@ -6,7 +6,6 @@ constexpr int infoLogSize = 1024;
 #include <sstream>
 #include <fstream>
 #include <stdexcept>
-#include "../Include/glad/glad.h"
 #include "glm/gtc/type_ptr.hpp"
 
 Shader::Shader(const std::string &vertexPath, const std::string &fragmentPath) {
@@ -21,24 +20,39 @@ void Shader::unbind(){ glUseProgram(0); }
 
 // TODO : adding a cache for storing already fetched uniforms.
 int Shader::setMat4(const std::string &name, const glm::mat4 &matrix) {
-    GLint loc = glGetUniformLocation(_shaderProgram, name.c_str());
-    if (loc != -1) {
-        glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(matrix));
-    } else return -1;
+    if (_fetchedUniforms.find(name) != _fetchedUniforms.end()) {
+        glUniformMatrix4fv(_fetchedUniforms[name], 1, GL_FALSE, glm::value_ptr(matrix));
+    } else {
+        GLint loc = glGetUniformLocation(_shaderProgram, name.c_str());
+        if (loc != -1) {
+            _fetchedUniforms[name] = loc;
+            glUniformMatrix4fv(loc, 1, GL_FALSE, glm::value_ptr(matrix));
+        } else return -1;
+    }
     return 0;
 }
 int Shader::setVec3(const std::string& name, const glm::vec3& vector) {
-    GLint loc = glGetUniformLocation(_shaderProgram, name.c_str());
-    if (loc != -1) {
-        glUniform3fv(loc, 1, &vector[0]);
+    if (_fetchedUniforms.find(name) != _fetchedUniforms.end()) {
+        glUniform3fv(_fetchedUniforms[name], 1, &vector[0]);
+    } else {
+        GLint loc = glGetUniformLocation(_shaderProgram, name.c_str());
+        if (loc != -1) {
+            _fetchedUniforms[name] = loc;
+            glUniform3fv(loc, 1, &vector[0]);
+        } else return -1;
     }
     return 0;
 }
 int Shader::setFloat(const std::string& name, const float value) {
-    GLint loc = glGetUniformLocation(_shaderProgram, name.c_str());
-    if (loc != -1) {
-        glUniform1f(loc, value);
-    } else return -1;
+    if (_fetchedUniforms.find(name) != _fetchedUniforms.end()) {
+        glUniform1f(_fetchedUniforms[name], value);
+    } else {
+        GLint loc = glGetUniformLocation(_shaderProgram, name.c_str());
+        if (loc != -1) {
+            _fetchedUniforms[name] = loc;
+            glUniform1f(loc, value);
+        } else return -1;
+    }
     return 0;
 }
 
