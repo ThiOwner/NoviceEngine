@@ -11,7 +11,7 @@ class Scene {
 public:
     Scene() = default;
 
-    void update(FrameContext& context);
+    void update(const FrameContext& context);
 
     template<typename T, typename... Args>
     T* addGameObject(Args&&... args) {

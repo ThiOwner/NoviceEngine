@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <stdexcept>
 
-void Scene::update(FrameContext& context) {
+void Scene::update(const FrameContext& context) {
     for (auto& object : _objects){
         object->update(context);
     }

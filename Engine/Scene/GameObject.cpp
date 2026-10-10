@@ -1,9 +1,9 @@
 #include "GameObject.hpp"
 #include <algorithm>
 
-void GameObject::update(FrameContext& context) {
+void GameObject::update(const FrameContext& context) {
     for (auto& component : _components) {
-        component->update(context);
+        if (component->isActive) component->update(context);
     }
 
     for (auto& component : _pendingComponents) {

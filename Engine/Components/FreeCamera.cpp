@@ -1,12 +1,12 @@
-#include "FlyCameraControl.hpp"
+#include "FreeCamera.hpp"
 #include "Camera.hpp"
 #include "Scene/GameObject.hpp"
 #include "Core/Input.hpp"
 #include <glm/glm.hpp>
 
-void FlyCameraControl::update(const FrameContext& context) {
+void FreeCamera::update(const FrameContext& context) {
     Transform* transform = owner->getTransform();
-    const Input input = context.input;
+    const Input& input = context.input;
 
     glm::vec3 rot = transform->getRotation();
     rot.y -= input.getMouseDeltaX() * mouseSensitivity;

@@ -10,7 +10,7 @@ public:
     GameObject() = default;
     virtual ~GameObject() = default;
 
-    virtual void update(FrameContext& context);
+    virtual void update(const FrameContext& context);
 
     template<typename T, typename... Args>
     T* addComponent(Args&&... args) {

@@ -1,6 +1,6 @@
 #include <iostream>
 #include "../Engine/Core/Engine.hpp"
-#include "Components/FlyCameraControl.hpp"
+#include "Components/FreeCamera.hpp"
 #include "../Engine/Components/Camera.hpp"
 #include "../Engine/Rendering/Material.hpp"
 #include "../Engine/Assets/AssetManager.hpp"
@@ -13,7 +13,7 @@ int main() {
         auto* camera = engine.scene.addGameObject<GameObject>();
         auto* cameraComponent = camera->addComponent<Camera>(45.0f,0.1f,1000.0f);
         camera->getTransform()->setPosition(glm::vec3(0.0f, 0.0f, -2.0f));
-        camera->addComponent<FlyCameraControl>();
+        camera->addComponent<FreeCamera>();
 
         engine.scene.setActiveCamera(cameraComponent);
 
