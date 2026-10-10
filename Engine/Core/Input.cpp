@@ -35,7 +35,7 @@ bool Input::isKeyJustReleased(const Key key) const {
     return !_currentKeys[glfwKey]&&_previousKeys[glfwKey];
 }
 
-bool Input::isMouseButtonPressed(MouseButton button) const {
+bool Input::isMouseButtonPressed(const MouseButton button) const {
     return glfwGetMouseButton(_window.getWindow(), mouseButtonToGLFWMouseButton(button)) == GLFW_PRESS;
 }
 
@@ -58,6 +58,7 @@ int Input::keyToGLFWKey(const Key key) {
         case Key::Escape: return GLFW_KEY_ESCAPE;
         case Key::Space: return GLFW_KEY_SPACE;
         case Key::LeftShift: return GLFW_KEY_LEFT_SHIFT;
+        case Key::F1 : return GLFW_KEY_F1;
         default: return GLFW_KEY_UNKNOWN;
     }
 }

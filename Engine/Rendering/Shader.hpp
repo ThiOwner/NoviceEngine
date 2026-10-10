@@ -25,6 +25,8 @@ public:
 private:
     unsigned int _shaderProgram = 0;
 
+    GLint getUniformLocation(const std::string& name);
+
     std::map<std::string, GLint> _fetchedUniforms;
 
     void compileShaders(const std::string& vertexSource,const std::string& fragmentSource);

@@ -20,4 +20,6 @@ private:
     Window _window;
     Input _input;
     Time _time;
+
+    bool _capturedMouse = true;
 };

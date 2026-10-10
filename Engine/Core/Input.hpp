@@ -4,7 +4,7 @@
 #include <array>
 
 // Enums
-enum class Key{ W,A,S,D,Space,Escape,LeftShift };
+enum class Key{ W,A,S,D,Space,Escape,LeftShift,F1 };
 enum class MouseButton{ Left,Right,Middle };
 
 class Input{
