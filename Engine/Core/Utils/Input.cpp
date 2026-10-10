@@ -19,7 +19,7 @@ void Input::update() {
 
 bool Input::isKeyPressed(const Key key) const {
     const int glfwKey = keyToGLFWKey(key);
-    if (glfwKey == GLFW_KEY_UNKNOWN) return false;
+    if (!_enabled || glfwKey == GLFW_KEY_UNKNOWN) return false;
     return _currentKeys[glfwKey];
 }
 
@@ -36,17 +36,19 @@ bool Input::isKeyJustReleased(const Key key) const {
 }
 
 bool Input::isMouseButtonPressed(const MouseButton button) const {
-    return glfwGetMouseButton(_window.getWindow(), mouseButtonToGLFWMouseButton(button)) == GLFW_PRESS;
+    if (_enabled ) {
+        return glfwGetMouseButton(_window.getWindow(), mouseButtonToGLFWMouseButton(button)) == GLFW_PRESS;
+    }
+    return false;
 }
 
 float Input::getMouseX() const { return static_cast<float>(_mouseX); }
-
 float Input::getMouseY() const { return static_cast<float>(_mouseY); }
 
-float Input::getMouseDeltaX() const { return static_cast<float>(_mouseDeltaX); }
+float Input::getMouseDeltaX() const { return _enabled ? static_cast<float>(_mouseDeltaX) : 0.0f; }
+float Input::getMouseDeltaY() const { return _enabled ? static_cast<float>(_mouseDeltaY) : 0.0f; }
 
-float Input::getMouseDeltaY() const { return static_cast<float>(_mouseDeltaY); }
-
+void Input::setEnabled(bool const enabled) { _enabled = enabled; }
 
 // Static methods
 int Input::keyToGLFWKey(const Key key) {

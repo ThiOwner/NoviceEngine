@@ -2,7 +2,7 @@
 
 #include <memory>
 #include <vector>
-#include "Core/FrameContext.hpp"
+#include "../Core/Utils/FrameContext.hpp"
 #include "Components/Transform.hpp"
 
 class GameObject {

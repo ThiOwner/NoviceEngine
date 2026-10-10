@@ -1,7 +1,7 @@
 #include "FreeCamera.hpp"
 #include "Camera.hpp"
 #include "Scene/GameObject.hpp"
-#include "Core/Input.hpp"
+#include "../Core/Utils/Input.hpp"
 #include <glm/glm.hpp>
 
 void FreeCamera::update(const FrameContext& context) {

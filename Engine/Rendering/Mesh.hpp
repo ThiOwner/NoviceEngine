@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../Include/glad/glad.h"
-#include "../Core/Types.hpp"
+#include "../Core/Utils/Types.hpp"
 
 class Mesh {
 public:

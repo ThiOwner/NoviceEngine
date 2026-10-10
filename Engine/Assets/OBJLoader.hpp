@@ -1,7 +1,7 @@
 #pragma once
 
 #include <string>
-#include "../Engine/Core/Types.hpp"
+#include "../Core/Utils/Types.hpp"
 
 struct IndexKey {
     int vertexIndex; int normalIndex; int texcoordIndex;

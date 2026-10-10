@@ -1,5 +1,5 @@
 #pragma once
-#include "Window.hpp"
+#include "../Window.hpp"
 
 #include <array>
 
@@ -14,6 +14,7 @@ public:
     void update();
 
     bool isKeyPressed(Key key) const;
+    bool isKeyPressedAnyState(Key key) const;
     bool isKeyJustPressed(Key key) const;
     bool isKeyJustReleased(Key key) const;
 
@@ -24,8 +25,12 @@ public:
     float getMouseDeltaX() const;
     float getMouseDeltaY() const;
 
+    void setEnabled(bool enabled);
+
 private:
     Window& _window;
+
+    bool _enabled = true;
 
     bool _firstMouse = true;
     double _mouseX = 0.0, _mouseY = 0.0, _mouseDeltaX = 0.0, _mouseDeltaY = 0.0;

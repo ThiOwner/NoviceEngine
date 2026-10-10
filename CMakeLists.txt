@@ -68,6 +68,33 @@ target_include_directories(
 )
 
 # ============================================================
+# Dear ImGui
+# ============================================================
+
+FetchContent_Declare(
+        imgui
+        GIT_REPOSITORY https://github.com/ocornut/imgui.git
+        GIT_TAG v1.91.8
+)
+FetchContent_MakeAvailable(imgui)
+
+add_library(imgui STATIC
+        ${imgui_SOURCE_DIR}/imgui.cpp
+        ${imgui_SOURCE_DIR}/imgui_draw.cpp
+        ${imgui_SOURCE_DIR}/imgui_tables.cpp
+        ${imgui_SOURCE_DIR}/imgui_widgets.cpp
+        ${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
+        ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
+)
+
+target_include_directories(imgui PUBLIC
+        ${imgui_SOURCE_DIR}
+        ${imgui_SOURCE_DIR}/backends
+)
+
+target_link_libraries(imgui PUBLIC glfw)
+
+# ============================================================
 # NoviceEngine
 # ============================================================
 
@@ -79,8 +106,12 @@ set(ENGINE_SOURCES
 
         Engine/Core/Engine.cpp
         Engine/Core/Window.cpp
-        Engine/Core/Input.cpp
-        Engine/Core/Time.cpp
+
+        Engine/Core/Utils/Input.cpp
+        Engine/Core/Utils/Time.cpp
+
+        # ImGUI
+        Engine/Core/UI/ImGUILayer.cpp
 
         # ----------------------------------------------------
         # Scene
@@ -124,10 +155,14 @@ set(ENGINE_HEADERS
 
         Engine/Core/Engine.hpp
         Engine/Core/Window.hpp
-        Engine/Core/Input.hpp
-        Engine/Core/Time.hpp
-        Engine/Core/Types.hpp
-        Engine/Core/FrameContext.hpp
+
+        Engine/Core/Utils/Input.hpp
+        Engine/Core/Utils/Time.hpp
+        Engine/Core/Utils/Types.hpp
+        Engine/Core/Utils/FrameContext.hpp
+
+        # ImGUI
+        Engine/Core/UI/ImGUILayer.hpp
 
         # ----------------------------------------------------
         # Scene
@@ -184,6 +219,7 @@ target_link_libraries(
         glm::glm
         OpenGL::GL
         glad
+        imgui
 )
 
 target_compile_features(

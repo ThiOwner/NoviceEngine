@@ -2,8 +2,9 @@
 #include "Rendering/Renderer.hpp"
 #include "Scene/Scene.hpp"
 #include "Window.hpp"
-#include "Input.hpp"
-#include "Time.hpp"
+#include "Utils/Input.hpp"
+#include "Utils/Time.hpp"
+#include "UI/ImGuiLayer.hpp"
 
 class Engine {
 public:
@@ -15,11 +16,13 @@ public:
 private:
     void update();
     void render();
+    void toggleUIMode();
 
     Renderer _renderer;
     Window _window;
+    ImGuiLayer _imgui;
     Input _input;
     Time _time;
 
-    bool _capturedMouse = true;
+    bool _uiMode = false;
 };

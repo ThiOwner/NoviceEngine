@@ -1,7 +1,7 @@
 #pragma once
 
 #include "GameObject.hpp"
-#include "Core/FrameContext.hpp"
+#include "../Core/Utils/FrameContext.hpp"
 #include "Components/Camera.hpp"
 #include <memory>
 #include <string>

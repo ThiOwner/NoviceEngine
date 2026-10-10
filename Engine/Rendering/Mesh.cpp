@@ -1,6 +1,6 @@
 #include "Mesh.hpp"
 
-#include "../Core/Types.hpp"
+#include "../Core/Utils/Types.hpp"
 #include <vector>
 
 Mesh::Mesh(const MeshData& meshData){
