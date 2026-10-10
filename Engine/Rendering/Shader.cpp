@@ -4,6 +4,7 @@ constexpr int infoLogSize = 1024;
 
 #include <string>
 #include <sstream>
+#include <fstream>
 #include <stdexcept>
 #include "../Include/glad/glad.h"
 #include "glm/gtc/type_ptr.hpp"

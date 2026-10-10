@@ -12,6 +12,9 @@ public:
     Shader(const Shader&) = delete;
     Shader& operator=(const Shader&) = delete;
 
+    Shader(Shader** other) = delete;
+    Shader& operator=(Shader&& other) = delete;
+
     void bind();
     void unbind();
 

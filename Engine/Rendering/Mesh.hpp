@@ -11,6 +11,9 @@ public:
     Mesh(const Mesh&) = delete;
     Mesh& operator=(const Mesh&) = delete;
 
+    Mesh(Mesh&& other) = delete;
+    Mesh& operator=(Mesh&& other) = delete;
+
     GLuint getVAO();
     int getIndexCount();
 
