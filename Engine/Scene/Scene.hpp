@@ -7,6 +7,8 @@
 #include <string>
 #include <vector>
 
+#include "DirectionalLight.hpp"
+
 class Scene {
 public:
     Scene() = default;
@@ -31,6 +33,8 @@ public:
     void setActiveCamera(Camera* activeCamera);
 
     std::vector<GameObject*> getGameObjects();
+
+    DirectionalLight dirLight;
 
 private:
     std::vector<std::unique_ptr<GameObject>> _objects;

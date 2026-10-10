@@ -88,6 +88,7 @@ set(ENGINE_SOURCES
 
         Engine/Scene/Scene.cpp
         Engine/Scene/GameObject.cpp
+        Engine/Scene/DirectionalLight.cpp
 
         # ----------------------------------------------------
         # Components
@@ -134,6 +135,7 @@ set(ENGINE_HEADERS
 
         Engine/Scene/Scene.hpp
         Engine/Scene/GameObject.hpp
+        Engine/Scene/DirectionalLight.hpp
 
         # ----------------------------------------------------
         # Components

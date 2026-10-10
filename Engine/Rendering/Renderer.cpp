@@ -10,6 +10,11 @@ void Renderer::render(Scene& scene, float aspectRatio) {
     const glm::mat4 viewMatrix = activeCamera->getViewMatrix();
     const glm::mat4 projectionMatrix = activeCamera->getProjectionMatrix(aspectRatio);
 
+    const glm::vec3 gLightDirection = scene.dirLight.getDirection();
+    const glm::vec3 lightDirView = glm::normalize(glm::mat3(viewMatrix) * -gLightDirection);
+    const glm::vec3 gDirLightColor = scene.dirLight.color;
+    const float gDirLightIntensity = scene.dirLight.intensity;
+
     for (auto* object : objects) {
         auto* meshRenderer = object->getComponent<MeshRenderer>();
         if (meshRenderer == nullptr)
@@ -21,6 +26,10 @@ void Renderer::render(Scene& scene, float aspectRatio) {
 
         shader->setMat4("u_projection", projectionMatrix);
         shader->setMat4("u_view", viewMatrix);
+
+        shader->setVec3("u_lightDirection", lightDirView);
+        shader->setVec3("u_dirLightColor", gDirLightColor);
+        shader->setFloat("u_dirLightIntensity", gDirLightIntensity);
 
         auto* mesh = meshRenderer->getMesh();
         glm::mat4 modelMatrix = object->getTransform()->getModelMatrix();
