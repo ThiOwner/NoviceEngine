@@ -18,6 +18,8 @@ public:
     void processingPendingObjects();
     void processingDestroyObjects();
 
+    void prepareSceneForEdit();
+
     template<typename T, typename... Args>
     T* addGameObject(Args&&... args) {
         static_assert(std::is_base_of_v<GameObject, T>);

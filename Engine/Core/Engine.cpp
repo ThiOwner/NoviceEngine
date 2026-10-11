@@ -43,13 +43,14 @@ void Engine::update() {
         scene.update(context);
     } else {
         _editorCamera.update(context);
-        scene.processingPendingObjects();
-        scene.processingDestroyObjects();
+        scene.prepareSceneForEdit();
     }
 }
 
 void Engine::render() {
-    Camera* camera = (_currentState == ENGINE_STATE::PLAY_MODE) ? scene.getActiveCamera() : _editorCameraComponent;
+    Camera* camera = (_currentState == ENGINE_STATE::PLAY_MODE) ?
+        scene.getActiveCamera() == nullptr ? _editorCameraComponent : scene.getActiveCamera()
+        : _editorCameraComponent;
     glm::mat4 view = camera->getViewMatrix();
 
     RenderView rv{

@@ -12,6 +12,10 @@ public:
 
     virtual void update(const FrameContext& context);
 
+    virtual void processingPendingComponents();
+
+    virtual void processingDestroyComponents();
+
     template<typename T, typename... Args>
     T* addComponent(Args&&... args) {
         static_assert(std::is_base_of_v<Component, T>);
@@ -21,7 +25,6 @@ public:
 
         T* ptr = component.get();
         ptr->owner = this;
-        ptr->awake();
 
         _pendingComponents.push_back(std::move(component));
         return ptr;

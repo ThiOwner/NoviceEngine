@@ -31,6 +31,15 @@ void Scene::processingDestroyObjects() {
     _objectsToDestroy.clear();
 }
 
+void Scene::prepareSceneForEdit() {
+    processingPendingObjects();
+    for (auto& object : _objects)
+        object->processingPendingComponents();
+    processingDestroyObjects();
+    for (auto& object : _objects)
+        object->processingDestroyComponents();
+}
+
 void Scene::destroyGameObject(GameObject* object) {
     _objectsToDestroy.push_back(object);
 }

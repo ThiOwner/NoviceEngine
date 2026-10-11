@@ -6,11 +6,11 @@ class GameObject;
 class Component {
 public:
     GameObject* owner = nullptr;
+    bool hasStarted = false;
     bool isActive = true;
 
     virtual ~Component() = default;
 
-    virtual void awake() {} // Called at the creation.
-    virtual void start() {} // Called at the first frame.
+    virtual void start(const FrameContext& context) {} // Called at the first frame.
     virtual void update(const FrameContext& context) {} // Called every frame
 };
