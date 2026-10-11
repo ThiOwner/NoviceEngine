@@ -59,6 +59,7 @@ int Input::keyToGLFWKey(const Key key) {
         case Key::Space: return GLFW_KEY_SPACE;
         case Key::LeftShift: return GLFW_KEY_LEFT_SHIFT;
         case Key::F1 : return GLFW_KEY_F1;
+        case Key::F2 : return GLFW_KEY_F2;
         default: return GLFW_KEY_UNKNOWN;
     }
 }

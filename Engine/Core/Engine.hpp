@@ -10,19 +10,21 @@ enum class ENGINE_STATE{EDIT_MODE, PLAY_MODE};
 class Engine {
 public:
     Engine();
-
     void run();
-
     Scene scene;
-private:
-    ENGINE_STATE _currentState;
 
+private:
     void update();
     void render();
+    void toggleState();
+
+    ENGINE_STATE _currentState = ENGINE_STATE::EDIT_MODE;
+
+    GameObject _editorCamera;
+    Camera* _editorCameraComponent = nullptr;
 
     Window _window;
     Input _input;
     Time _time;
-
     bool _capturedMouse = true;
 };
