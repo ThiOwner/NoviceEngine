@@ -1,13 +1,10 @@
 #pragma once
-
 #include "Rendering/Mesh.hpp"
 #include "Rendering/Shader.hpp"
-
 #include <memory>
 #include <string>
 #include <unordered_map>
 
-// Asset Manager class
 class AssetManager {
 public:
     static Mesh* loadMesh(const std::string& path);

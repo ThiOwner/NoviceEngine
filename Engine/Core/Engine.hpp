@@ -5,6 +5,8 @@
 #include "Input.hpp"
 #include "Time.hpp"
 
+enum class ENGINE_STATE{EDIT_MODE, PLAY_MODE};
+
 class Engine {
 public:
     Engine();
@@ -13,10 +15,11 @@ public:
 
     Scene scene;
 private:
+    ENGINE_STATE _currentState;
+
     void update();
     void render();
 
-    Renderer _renderer;
     Window _window;
     Input _input;
     Time _time;

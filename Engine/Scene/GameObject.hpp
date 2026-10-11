@@ -39,6 +39,14 @@ public:
         return nullptr;
     }
 
+    template<typename T>
+    void getComponents(std::vector<T*>& out) {
+        for (auto& component : _components) {
+            if (!component->isActive) continue;
+            if (T* casted = dynamic_cast<T*>(component.get())) out.push_back(casted);
+        }
+    }
+
     Transform* getTransform();
 
     Transform transform;
