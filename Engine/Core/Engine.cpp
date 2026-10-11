@@ -43,6 +43,8 @@ void Engine::update() {
         scene.update(context);
     } else {
         _editorCamera.update(context);
+        scene.processingPendingObjects();
+        scene.processingDestroyObjects();
     }
 }
 

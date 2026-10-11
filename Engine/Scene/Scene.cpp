@@ -7,12 +7,18 @@ void Scene::update(const FrameContext& context) {
     for (auto& object : _objects){
         object->update(context);
     }
+    processingPendingObjects();
+    processingDestroyObjects();
+}
 
+void Scene::processingPendingObjects() {
     for (auto& object : _pendingObjects) {
         _objects.push_back(std::move(object));
     }
     _pendingObjects.clear();
+}
 
+void Scene::processingDestroyObjects() {
     for (GameObject* object : _objectsToDestroy){
         _objects.erase(
         std::remove_if(_objects.begin(), _objects.end(),
